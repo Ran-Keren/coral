@@ -2,18 +2,18 @@
 <html lang="he" dir="rtl">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
     <title>מוצרי חלב אם: סבון טבעי + תפריט</title>
     <style>
         :root{
             --gap:18px;
-            --accent:#00695C; /* Dark Teal - A calm, natural color */
-            --bg:#e0f7fa; /* Light Cyan */
+            --accent:#00695C; 
+            --bg:#e0f7fa; 
             --text:#222;
             --success: #28a745;
             --error: #dc3545;
             --sidebar-width: 250px;
-            --soft-white: #fefefe; /* A slightly warmer white */
+            --soft-white: #fefefe; 
         }
         html,body{
             height:100%;
@@ -21,12 +21,9 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans Hebrew', sans-serif;
             background: var(--bg);
             color:var(--text);
-            /* Important: Hide horizontal overflow to prevent the off-screen sidebar from being scrollable */
             overflow-x: hidden; 
         }
         .app{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;box-sizing:border-box; flex-direction: column;}
-        
-        /* Logo styles removed here */
         
         .card{width:100%;max-width:1100px;background:linear-gradient(180deg,var(--soft-white),#fbfbfb);border-radius:16px;box-shadow:0 12px 40px rgba(0,0,0,0.15);overflow:hidden;display:flex;gap:var(--gap);flex-direction:row-reverse; position: relative;}
         .content{flex:1;min-width:260px;padding:28px;display:flex;flex-direction:column;gap:14px}
@@ -45,23 +42,22 @@
         /* Coupon Styles */
         .coupon-section {
             display: flex;
-            gap: 10px;
-            align-items: flex-start; 
-            margin-top: 15px;
-            flex-direction: column; 
+            gap: 5px;
             align-items: center; 
+            margin-top: 10px;
+            flex-direction: column; 
         }
         .coupon-input-group {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             align-items: center;
         }
         .coupon-section input {
-            padding: 10px;
+            padding: 8px;
             border: 1px solid #ccc;
             border-radius: 8px;
-            width: 140px;
-            font-size: 15px;
+            width: 120px;
+            font-size: 14px;
             text-align: center;
             direction: ltr; 
         }
@@ -69,64 +65,66 @@
             background: var(--accent);
             border: 1px solid var(--accent);
             color: #fff;
-            padding: 10px 14px;
+            padding: 8px 12px;
             border-radius: 8px;
             cursor: pointer;
             font-weight: 700;
-            font-size: 15px;
-            transition: all 0.2s;
-            box-shadow: none;
-        }
-        .btn-apply:hover {
-            background: #004d40;
-            color: #fff;
-        }
-        .coupon-msg {
             font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .coupon-msg {
+            font-size: 13px;
             font-weight: 700;
-            min-height: 20px;
+            min-height: 18px;
             text-align: center;
-            margin-top: 5px;
+            margin-top: 2px;
         }
         .coupon-msg.success { color: var(--success); }
         .coupon-msg.error { color: var(--error); }
 
-
         .carousel-wrap{width:520px;max-width:48%;min-width:300px;background: #f5f5f5;border-radius:12px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center}
         .slide img{width:100%;height:100%;object-fit:cover;display:block}
 
-        /* Modal Styles */
-        .modal{display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.6);align-items:center;justify-content:center;overflow-y: auto; padding: 20px 0;}
+        /* --- Compact Modal Styles --- */
+        .modal{display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.6);align-items:center;justify-content:center; padding: 10px;}
         .modal.show{display:flex}
+        
         .modal-content{
             background:var(--soft-white);
-            padding:35px;
+            padding: 20px 25px; /* Reduced padding */
             border-radius:18px;
-            max-width:450px;
-            width:90%;
+            max-width:420px;
+            width:100%;
             text-align:right;
             box-shadow:0 30px 80px rgba(0,0,0,0.4); 
             margin: auto; 
-            border-top: 5px solid var(--accent); 
+            border-top: 5px solid var(--accent);
+            max-height: 95vh; /* Ensure it never goes off screen */
+            overflow-y: auto; /* Scroll inside modal if needed */
+            box-sizing: border-box;
         }
-        .modal h2{margin:0 0 20px;color:var(--accent); text-align: center; font-size: 26px; border-bottom: none; padding-bottom: 0;}
-        .modal p{margin:10px 0;line-height:1.6}
-        .modal-buttons{display:flex;gap:15px;margin-top:25px;justify-content:center; flex-wrap: wrap;}
-        select{width:100px;padding:8px;border-radius:8px;border:1px solid #ccc;font-size:15px;text-align:center;cursor:pointer; background-color: #f9f9f9;}
-        .form-group{margin-bottom: 20px; text-align: right;}
-        .form-group label{display: block; margin-bottom: 5px; font-weight: 600; color: #333;}
-        .form-group input{width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-size: 16px; background-color: #f9f9f9;}
+
+        .modal h2{margin:0 0 10px;color:var(--accent); text-align: center; font-size: 22px; border-bottom: none; padding-bottom: 0;}
+        .modal p{margin:5px 0;line-height:1.4}
+        .modal-buttons{display:flex;gap:10px;margin-top:15px;justify-content:center; flex-wrap: wrap;}
+        
+        /* Compact Form Elements */
+        select{width:80px;padding:5px;border-radius:6px;border:1px solid #ccc;font-size:16px;text-align:center;cursor:pointer; background-color: #f9f9f9;}
+        
+        .form-group{margin-bottom: 10px; text-align: right;} /* Reduced margin */
+        .form-group label{display: block; margin-bottom: 2px; font-weight: 600; color: #333; font-size: 14px;}
+        .form-group input{width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-size: 16px; background-color: #f9f9f9; height: 38px;}
+        
         .price-container {
             text-align: center;
-            padding: 15px;
-            border: 1px dashed #ccc;
-            border-radius: 10px;
-            background-color: #f5f5f5;
+            padding: 5px;
+            margin-top: 5px !important;
         }
         .old-price {
             text-decoration: line-through;
             color: #999;
-            font-size: 16px;
+            font-size: 14px;
             margin-left: 10px;
             display: none;
         }
@@ -134,29 +132,30 @@
 
         /* Payment Modal Specific Styling */
         #paymentModalTitle {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 800;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
         #paymentModal .modal-content {
             background: linear-gradient(135deg, var(--soft-white), #f0fff0); 
-            max-width: 400px;
-            padding: 30px;
+            max-width: 380px;
+            padding: 25px;
+            text-align: center; /* Center everything in payment modal */
         }
         #paymentModal p {
             text-align: center;
-            font-size: 16px;
+            font-size: 15px;
             color: #555;
-            margin: 15px 0;
+            margin: 10px 0;
         }
         #paymentModal p strong {
             display: block;
-            font-size: 20px;
+            font-size: 24px;
             color: var(--accent);
-            margin-top: 10px;
+            margin-top: 5px;
         }
         #paymentTotalAmount {
-            font-size: 32px !important;
+            font-size: 28px !important;
             font-weight: 800;
             color: #E91E63; 
             display: inline;
@@ -165,8 +164,9 @@
         #openBitApp {
             background-color: #4CAF50; 
             transition: all 0.3s;
-            padding: 14px 25px;
+            padding: 12px 20px;
             font-size: 18px;
+            margin-top: 10px;
         }
         #openBitApp:hover {
             background-color: #388E3C;
@@ -193,15 +193,11 @@
         .sidebar {
             position: fixed;
             top: 0;
-            /* FIX 1: Negative value pushes it OFF the screen to the right */
             right: -270px; 
             width: var(--sidebar-width);
             height: 100%;
             background: var(--soft-white);
-            
-            /* FIX 2: Hide shadow when closed to prevent 'white border' effect */
             box-shadow: none;
-            
             transition: right 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
             z-index: 150; 
             padding: 25px 20px;
@@ -210,8 +206,7 @@
             text-align: right;
         }
         .sidebar.open {
-            right: 0; /* Open position */
-            /* Show shadow only when open */
+            right: 0; 
             box-shadow: -4px 0 15px rgba(0,0,0,0.15); 
         }
         .close-sidebar {
@@ -283,17 +278,21 @@
                 padding: 8px 12px;
                 font-size: 14px;
             }
-            /* Adjust width and hidden position for mobile */
             .sidebar {
                 --sidebar-width: 220px; 
-                right: -240px; /* Negative value slightly larger than width */
+                right: -240px; 
             }
             .sidebar.open {
                 right: 0; 
             }
+            /* Extra compactness for small screens */
             .modal-content {
-                padding: 25px;
+                padding: 15px;
+                width: 95%;
             }
+            .form-group { margin-bottom: 8px; }
+            .modal h2 { font-size: 20px; margin-bottom: 5px; }
+            hr { margin: 10px 0 !important; }
         }
 
     </style>
@@ -364,26 +363,25 @@
 
     <div class="modal" id="shippingModal">
         <div class="modal-content">
-            <h2>הזמנה ופרטי משלוח 📦</h2>
-            <p style="text-align: center; font-weight: 500;">אנא בחרו כמות ומלאו פרטים:</p>
+            <h2>פרטי משלוח 📦</h2>
             
-            <div class="form-group" style="text-align: center;">
-                <label for="copies" style="font-size: 16px; margin-bottom: 8px;">כמות סבונים (יחידות):</label>
-                <select id="copies">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                </select>
-                <div class="price-container" style="margin-top: 15px;">
+            <div class="form-group" style="text-align: center; margin-bottom: 5px;">
+                <label for="copies" style="font-size: 14px; margin-bottom: 2px;">כמות סבונים:</label>
+                <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
+                    <select id="copies">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                    <div class="price" id="totalPrice" style="font-size: 20px;">₪45</div>
                     <span class="old-price" id="oldPrice"></span>
-                    <div class="price" id="totalPrice">₪45</div>
                 </div>
             </div>
 
@@ -394,15 +392,16 @@
                 </div>
                 <div class="coupon-msg" id="couponMsg"></div>
             </div>
-            <hr style="border: 0; border-top: 1px dashed #eee; margin: 20px 0;">
+            
+            <hr style="border: 0; border-top: 1px dashed #eee; margin: 15px 0;">
 
             <div class="form-group"><label for="shippingName">שם מלא</label><input type="text" id="shippingName" required placeholder="שם ושם משפחה"></div>
             <div class="form-group"><label for="shippingPhone">טלפון</label><input type="tel" id="shippingPhone" required placeholder="05X-XXXXXXX"></div>
             <div class="form-group"><label for="shippingEmail">דוא"ל</label><input type="email" id="shippingEmail" required placeholder="example@mail.com"></div>
             <div class="form-group"><label for="shippingCity">עיר</label><input type="text" id="shippingCity" required placeholder="לדוגמה: תל אביב"></div>
-            <div class="form-group"><label for="shippingAddress">כתובת מלאה</label><input type="text" id="shippingAddress" required placeholder="רחוב, מספר בית, דירה"></div>
+            <div class="form-group"><label for="shippingAddress">כתובת</label><input type="text" id="shippingAddress" required placeholder="רחוב, מספר בית, דירה"></div>
             <div class="modal-buttons">
-                <button class="btn" id="continueToPaymentBtn" style="flex-grow: 1;">המשך לתשלום (Bit / כרטיס)</button>
+                <button class="btn" id="continueToPaymentBtn" style="flex-grow: 1;">המשך לתשלום</button>
                 <button class="btn close-modal" data-modal="shippingModal" style="background: #999; flex-grow: 1;">ביטול</button>
             </div>
         </div>
@@ -410,18 +409,17 @@
     
     <div class="modal" id="paymentModal">
         <div class="modal-content">
-            <h2 id="paymentModalTitle">שלב התשלום הסופי ✅</h2>
+            <h2 id="paymentModalTitle">שלב התשלום ✅</h2>
             <p>
-                <strong>סכום לתשלום סופי: </strong><br>
-                <span id="paymentTotalAmount">₪45</span>
+                <strong>סכום סופי: <span id="paymentTotalAmount">₪45</span></strong>
             </p>
-            <hr style="border: 0; border-top: 1px solid #ddd; margin: 20px 0;">
-            <p>
-                לאחר לחיצה על "מעבר לתשלום מאובטח" (אפשרויות Bit / כרטיס) תישלח אליכם **הזמנת תשלום** (לינק) במייל או SMS, ופרטי ההזמנה שלכם יועברו לטיפול.
+            <hr style="border: 0; border-top: 1px solid #ddd; margin: 15px 0;">
+            <p style="font-size: 14px;">
+                לחיצה על הכפתור תעביר אותך לתשלום מאובטח ב-Bit. לאחר מכן, פרטי ההזמנה יישלחו אלינו.
             </p>
-            <div class="modal-buttons">
-                <button class="btn" id="openBitApp" style="width: 100%;">מעבר לתשלום מאובטח</button>
-                <button class="btn close-modal" data-modal="paymentModal" style="background: #999; width: 100%; margin-top: 5px;">חזרה לפרטי משלוח</button>
+            <div class="modal-buttons" style="flex-direction: column; width: 100%;">
+                <button class="btn" id="openBitApp" style="width: 100%;">מעבר לתשלום (Bit)</button>
+                <button class="btn close-modal" data-modal="paymentModal" style="background: #999; width: 100%; margin-top: 5px;">חזרה</button>
             </div>
         </div>
     </div>
@@ -429,12 +427,10 @@
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
     
     <script>
-        // 🛑 STEP 1: Replace 'YOUR_USER_ID' with your actual EmailJS User ID
         emailjs.init('ecHybfD_vT68aQGnO'); 
 
         const PRICE_PER_BOOK = 45; 
         
-        // --- Coupon Logic Variables ---
         const COUPONS = {
             'TALYA20': 0.20, 
             'TALYA10': 0.10  
@@ -447,7 +443,6 @@
         const totalPriceEl = document.getElementById('totalPrice');
         const oldPriceEl = document.getElementById('oldPrice'); 
         
-        // NEW: Button to open the order modal
         const openOrderModalBtn = document.getElementById('openOrderModalBtn'); 
 
         const shippingModal = document.getElementById('shippingModal');
@@ -456,7 +451,6 @@
         const paymentTotalAmount = document.getElementById('paymentTotalAmount');
         const openBitApp = document.getElementById('openBitApp'); 
 
-        // Coupon Elements
         const couponInput = document.getElementById('couponCode');
         const applyCouponBtn = document.getElementById('applyCouponBtn');
         const couponMsg = document.getElementById('couponMsg');
@@ -498,7 +492,7 @@
                     discountRate = COUPONS[inputCode]; 
                     const discountPercent = discountRate * 100;
 
-                    couponMsg.textContent = `הקופון הופעל בהצלחה! (${discountPercent}% הנחה)`;
+                    couponMsg.textContent = `הקופון הופעל! (${discountPercent}% הנחה)`;
                     couponMsg.className = "coupon-msg success";
                     
                     couponInput.disabled = true; 
@@ -507,10 +501,10 @@
                     updateTotal();
                 }
             } else if (inputCode === "") {
-                couponMsg.textContent = "אנא הזן קוד קופון";
+                couponMsg.textContent = "הזן קוד";
                 couponMsg.className = "coupon-msg error";
             } else {
-                couponMsg.textContent = "קוד קופון שגוי";
+                couponMsg.textContent = "קוד שגוי";
                 couponMsg.className = "coupon-msg error";
             }
         }
@@ -520,7 +514,6 @@
             modalElement.classList.remove('show');
         }
 
-        // --- Sidebar Logic ---
         function toggleSidebar() {
             sidebar.classList.toggle('open');
             sidebarOverlay.classList.toggle('show');
@@ -542,10 +535,8 @@
             });
         });
 
-        // --- Email Sending Function ---
         function sendOrderEmail() {
             if (Object.keys(currentOrderData).length === 0) {
-                console.error('Error: No order data available for email sending.');
                 return;
             }
 
@@ -561,22 +552,17 @@
                 product_name: "סבון טבעי מחלב אם" 
             })
             .then(function(response) {
-                console.log('SUCCESS! Order details sent to seller.', response.status, response.text);
+                console.log('SUCCESS');
             }, function(error) {
-                console.log('FAILED to send order details.', error);
+                console.log('FAILED', error);
             });
         }
 
-
-        // --- Event Listeners and Logic ---
-        
-        // NEW: Open Shipping Modal
         openOrderModalBtn.addEventListener('click', ()=>{ 
             updateTotal();
             shippingModal.classList.add('show'); 
         });
 
-        // Price and Coupon Logic moved to be active inside the modal
         copiesInput.addEventListener('change', updateTotal);
         applyCouponBtn.addEventListener('click', applyCoupon);
         couponInput.addEventListener('keypress', function (e) {
@@ -588,29 +574,21 @@
         updateTotal(); 
 
 
-        // Carousel Logic (kept for basic image display)
         (function(){
             const slidesEl = document.getElementById('slides');
             const slides = Array.from(slidesEl.children);
-            if (slides.length <= 1) return; // Disable carousel if only one slide
-            // const dotsEl = document.getElementById('dots'); // לא קיים ב-HTML
-            // const prev = document.getElementById('prev'); // לא קיים ב-HTML
-            // const next = document.getElementById('next'); // לא קיים ב-HTML
+            if (slides.length <= 1) return;
             let index = 0;
             const intervalMs = 3000;
             let timer = null;
             
-
             function update(){
                 if (slidesEl) slidesEl.style.transform = `translateX(${-index*100}%)`;
             }
 
             function nextSlide(){ index = (index+1) % slides.length; update(); }
-            function prevSlide(){ index = (index-1 + slides.length) % slides.length; update(); }
-            function goTo(i){ index = ((i%slides.length)+slides.length)%slides.length; update(); resetTimer(); }
-
+            
             function startTimer(){ if(timer) clearInterval(timer); timer = setInterval(nextSlide, intervalMs); }
-            function resetTimer(){ startTimer(); }
             startTimer();
 
             const carouselWrap = document.querySelector('.carousel-wrap');
@@ -620,8 +598,6 @@
             update();
         })();
 
-
-        // Handle 'Continue to Payment' button (Validation & Data Storage)
         continueToPaymentBtn.addEventListener('click', (e)=>{
             const name = document.getElementById('shippingName').value.trim();
             const phone = document.getElementById('shippingPhone').value.trim();
@@ -644,20 +620,16 @@
 
         openBitApp.addEventListener('click', ()=>{
             sendOrderEmail(); 
-            alert('פרטי ההזמנה נשלחו בהצלחה! כעת תועברו למערכת התשלום (סימולציה).');
             // Updated BitPay Link
             window.open('https://www.bitpay.co.il/app/me/9364874B-AF78-48EC-1189-1141F63194B7269A', '_blank');
 
             closeModal(paymentModal);
         });
 
-
-        // Close Modals using the 'ביטול' buttons or outside click
         document.querySelectorAll('.close-modal').forEach(button => {
             button.addEventListener('click', () => {
                 const modalId = button.dataset.modal || (button.closest('.modal') ? button.closest('.modal').id : null);
                 if (modalId === 'paymentModal') {
-                    // Special case for Payment modal: close it and re-open shipping modal
                     closeModal(document.getElementById(modalId));
                     shippingModal.classList.add('show');
                 } else if (modalId) {
