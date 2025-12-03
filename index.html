@@ -198,13 +198,16 @@
         .sidebar {
             position: fixed;
             top: 0;
-            /* FIX 1: Set the hidden position to be slightly more than the width */
-            right: calc(var(--sidebar-width) + 10px); 
+            /* FIX 1: Negative value pushes it OFF the screen to the right */
+            right: -270px; 
             width: var(--sidebar-width);
             height: 100%;
             background: var(--soft-white);
-            box-shadow: -4px 0 15px rgba(0,0,0,0.15);
-            transition: right 0.3s ease-in-out;
+            
+            /* FIX 2: Hide shadow when closed to prevent 'white border' effect */
+            box-shadow: none;
+            
+            transition: right 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
             z-index: 150; 
             padding: 25px 20px;
             box-sizing: border-box;
@@ -213,6 +216,8 @@
         }
         .sidebar.open {
             right: 0; /* Open position */
+            /* Show shadow only when open */
+            box-shadow: -4px 0 15px rgba(0,0,0,0.15); 
         }
         .close-sidebar {
             background: none;
@@ -275,7 +280,7 @@
             .content{padding:18px}
         }
         
-        /* Mobile Specific: Vertical mode fix */
+        /* Mobile Specific */
         @media (max-width: 550px) {
             #sidebar-toggle {
                 right: 15px;
@@ -283,12 +288,11 @@
                 padding: 8px 12px;
                 font-size: 14px;
             }
-            /* FIX 2: Set smaller width for sidebar on small screens */
+            /* Adjust width and hidden position for mobile */
             .sidebar {
-                --sidebar-width: 220px; /* Reduced width */
-                right: calc(220px + 10px); /* Adjust hidden position to new width */
+                --sidebar-width: 220px; 
+                right: -240px; /* Negative value slightly larger than width */
             }
-            /* Ensure the open state is correct */
             .sidebar.open {
                 right: 0; 
             }
@@ -648,7 +652,8 @@
         openBitApp.addEventListener('click', ()=>{
             sendOrderEmail(); 
             alert('פרטי ההזמנה נשלחו בהצלחה! כעת תועברו למערכת התשלום (סימולציה).');
-            window.open('https://example.com/payment-link', '_blank');
+            // Updated BitPay Link
+            window.open('https://www.bitpay.co.il/app/me/9364874B-AF78-48EC-1189-1141F63194B7269A', '_blank');
 
             closeModal(paymentModal);
         });
