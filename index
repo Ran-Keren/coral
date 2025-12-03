@@ -1,558 +1,558 @@
 <!doctype html>
 <html lang="he" dir="rtl">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>מוצרי חלב אם: סבון טבעי + תפריט</title>
-<style>
-    :root{
-        --gap:18px;
-        --accent:#00695C; /* Dark Teal - A calm, natural color */
-        --bg:#e0f7fa; /* Light Cyan */
-        --text:#222;
-        --success: #28a745;
-        --error: #dc3545;
-        --sidebar-width: 250px;
-    }
-    html,body{
-        height:100%;
-        margin:0;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans Hebrew', sans-serif;
-        background: var(--bg);
-        color:var(--text);
-        overflow-x: hidden;
-    }
-    .app{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;box-sizing:border-box; flex-direction: column;}
-    .logo-container {
-        margin-bottom: 24px;
-        text-align: center;
-    }
-    .logo {
-        max-width: 200px;
-        height: auto;
-    }
-    .card{width:100%;max-width:1100px;background:linear-gradient(180deg,#fff,#fbfbfb);border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,0.08);overflow:hidden;display:flex;gap:var(--gap);flex-direction:row-reverse; position: relative;}
-    .content{flex:1;min-width:260px;padding:28px;display:flex;flex-direction:column;gap:14px}
-    h1{margin:0;font-size:24px; color: var(--accent);}
-    h2{font-size: 20px; color: var(--accent); border-bottom: 2px solid #eee; padding-bottom: 5px; margin-top: 25px;}
-    p{margin:0;line-height:1.7}
-    .lead{font-weight:600}
-    
-    /* CTA & Coupon Styles */
-    .cta{margin-top:auto;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-    .btn{background:var(--accent);color:#fff;border:none;padding:12px 18px;border-radius:10px;font-weight:600;cursor:pointer;transition:all 0.3s}
-    .btn:hover{background:#004d40;transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,105,92,0.3)}
-    .price{font-size:20px;font-weight:700;color:#111}
-    .natural-text { color: var(--accent); font-weight: 600; }
-    
-    /* Coupon Styles */
-    .coupon-section {
-        display: flex;
-        gap: 10px;
-        align-items: flex-start; 
-        margin-top: 15px;
-        flex-direction: column; 
-        align-items: center; /* Center coupon elements inside modal */
-    }
-    .coupon-input-group {
-        display: flex;
-        gap: 10px;
-        align-items: center;
-    }
-    .coupon-section input {
-        padding: 8px;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        width: 120px;
-        font-size: 14px;
-        text-align: center;
-        direction: ltr; 
-    }
-    .btn-apply {
-        background: #fff;
-        border: 1px solid var(--accent);
-        color: var(--accent);
-        padding: 8px 12px;
-        border-radius: 8px;
-        cursor: pointer;
-        font-weight: 600;
-        font-size: 14px;
-        transition: all 0.2s;
-    }
-    .btn-apply:hover {
-        background: var(--accent);
-        color: #fff;
-    }
-    .coupon-msg {
-        font-size: 13px;
-        font-weight: 600;
-        min-height: 20px;
-        text-align: center;
-    }
-    .coupon-msg.success { color: var(--success); }
-    .coupon-msg.error { color: var(--error); }
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>מוצרי חלב אם: סבון טבעי + תפריט</title>
+    <style>
+        :root{
+            --gap:18px;
+            --accent:#00695C; /* Dark Teal - A calm, natural color */
+            --bg:#e0f7fa; /* Light Cyan */
+            --text:#222;
+            --success: #28a745;
+            --error: #dc3545;
+            --sidebar-width: 250px;
+        }
+        html,body{
+            height:100%;
+            margin:0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans Hebrew', sans-serif;
+            background: var(--bg);
+            color:var(--text);
+            overflow-x: hidden;
+        }
+        .app{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;box-sizing:border-box; flex-direction: column;}
+        .logo-container {
+            margin-bottom: 24px;
+            text-align: center;
+        }
+        .logo {
+            max-width: 200px;
+            height: auto;
+        }
+        .card{width:100%;max-width:1100px;background:linear-gradient(180deg,#fff,#fbfbfb);border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,0.08);overflow:hidden;display:flex;gap:var(--gap);flex-direction:row-reverse; position: relative;}
+        .content{flex:1;min-width:260px;padding:28px;display:flex;flex-direction:column;gap:14px}
+        h1{margin:0;font-size:24px; color: var(--accent);}
+        h2{font-size: 20px; color: var(--accent); border-bottom: 2px solid #eee; padding-bottom: 5px; margin-top: 25px;}
+        p{margin:0;line-height:1.7}
+        .lead{font-weight:600}
+        
+        /* CTA & Coupon Styles */
+        .cta{margin-top:auto;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+        .btn{background:var(--accent);color:#fff;border:none;padding:12px 18px;border-radius:10px;font-weight:600;cursor:pointer;transition:all 0.3s}
+        .btn:hover{background:#004d40;transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,105,92,0.3)}
+        .price{font-size:20px;font-weight:700;color:#111}
+        .natural-text { color: var(--accent); font-weight: 600; }
+        
+        /* Coupon Styles */
+        .coupon-section {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start; 
+            margin-top: 15px;
+            flex-direction: column; 
+            align-items: center; /* Center coupon elements inside modal */
+        }
+        .coupon-input-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .coupon-section input {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            width: 120px;
+            font-size: 14px;
+            text-align: center;
+            direction: ltr; 
+        }
+        .btn-apply {
+            background: #fff;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        .btn-apply:hover {
+            background: var(--accent);
+            color: #fff;
+        }
+        .coupon-msg {
+            font-size: 13px;
+            font-weight: 600;
+            min-height: 20px;
+            text-align: center;
+        }
+        .coupon-msg.success { color: var(--success); }
+        .coupon-msg.error { color: var(--error); }
 
 
-    .carousel-wrap{width:520px;max-width:48%;min-width:300px;background: #f5f5f5;border-radius:12px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center}
-    .slide img{width:100%;height:100%;object-fit:cover;display:block}
+        .carousel-wrap{width:520px;max-width:48%;min-width:300px;background: #f5f5f5;border-radius:12px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center}
+        .slide img{width:100%;height:100%;object-fit:cover;display:block}
 
-    /* Modal Styles */
-    .modal{display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.5);align-items:center;justify-content:center;overflow-y: auto;}
-    .modal.show{display:flex}
-    .modal-content{background:#fff;padding:30px;border-radius:16px;max-width:400px;width:90%;text-align:right;box-shadow:0 20px 60px rgba(0,0,0,0.3); margin: 50px 0;}
-    .modal h2{margin:0 0 15px;color:var(--accent); text-align: center;}
-    .modal p{margin:10px 0;line-height:1.6}
-    .modal-buttons{display:flex;gap:10px;margin-top:20px;justify-content:center; flex-wrap: wrap;}
-    select{width:70px;padding:5px;border-radius:6px;border:1px solid #ccc;font-size:14px;text-align:center;cursor:pointer}
-    .form-group{margin-bottom: 15px; text-align: right;}
+        /* Modal Styles */
+        .modal{display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.5);align-items:center;justify-content:center;overflow-y: auto;}
+        .modal.show{display:flex}
+        .modal-content{background:#fff;padding:30px;border-radius:16px;max-width:400px;width:90%;text-align:right;box-shadow:0 20px 60px rgba(0,0,0,0.3); margin: 50px 0;}
+        .modal h2{margin:0 0 15px;color:var(--accent); text-align: center;}
+        .modal p{margin:10px 0;line-height:1.6}
+        .modal-buttons{display:flex;gap:10px;margin-top:20px;justify-content:center; flex-wrap: wrap;}
+        select{width:70px;padding:5px;border-radius:6px;border:1px solid #ccc;font-size:14px;text-align:center;cursor:pointer}
+        .form-group{margin-bottom: 15px; text-align: right;}
 
-    /* --- Sidebar Styles --- */
-    #sidebar-toggle {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        background: var(--accent);
-        color: #fff;
-        border: none;
-        padding: 10px 15px;
-        border-radius: 8px;
-        cursor: pointer;
-        font-size: 16px;
-        font-weight: 600;
-        z-index: 10;
-    }
-    .sidebar {
-        position: fixed;
-        top: 0;
-        right: -250px; /* מוסתר מחוץ למסך */
-        width: var(--sidebar-width);
-        height: 100%;
-        background: #fff;
-        box-shadow: -2px 0 10px rgba(0,0,0,0.1);
-        transition: right 0.3s ease-in-out;
-        z-index: 100; /* Z-index גבוה כדי לכסות הכל */
-        padding: 20px;
-        box-sizing: border-box;
-        overflow-y: auto;
-        text-align: right;
-    }
-    .sidebar.open {
-        right: 0; /* מצב פתוח: נכנס למסך */
-        z-index: 100;
-    }
-    .close-sidebar {
-        background: none;
-        border: none;
-        font-size: 30px;
-        position: absolute;
-        left: 10px;
-        top: 10px;
-        cursor: pointer;
-        color: #333;
-        line-height: 1;
-    }
-    /* סגנון לכיסוי השחור שמופיע מאחורי הסרגל */
-    .overlay {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: 90; /* מתחת לסרגל אבל מעל שאר התוכן */
-        cursor: pointer;
-    }
-    .overlay.show {
-        display: block;
-    }
-    /* Responsive */
-    @media (max-width:900px){
-        .card{flex-direction:column-reverse}
-        .carousel-wrap{width:100%;max-width:none;min-width:0;height:320px}
-        .content{padding:18px}
+        /* --- Sidebar Styles --- */
         #sidebar-toggle {
-            position: fixed;
-            top: 15px;
-            left: 15px;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            z-index: 10;
         }
-    }
-    @media (max-width: 500px) {
         .sidebar {
-            width: 90%;
+            position: fixed;
+            top: 0;
+            right: -250px; /* מוסתר מחוץ למסך */
+            width: var(--sidebar-width);
+            height: 100%;
+            background: #fff;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+            transition: right 0.3s ease-in-out;
+            z-index: 100; /* Z-index גבוה כדי לכסות הכל */
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+            text-align: right;
         }
-    }
-</style>
+        .sidebar.open {
+            right: 0; /* מצב פתוח: נכנס למסך */
+            z-index: 100;
+        }
+        .close-sidebar {
+            background: none;
+            border: none;
+            font-size: 30px;
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            cursor: pointer;
+            color: #333;
+            line-height: 1;
+        }
+        /* סגנון לכיסוי השחור שמופיע מאחורי הסרגל */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 90; /* מתחת לסרגל אבל מעל שאר התוכן */
+            cursor: pointer;
+        }
+        .overlay.show {
+            display: block;
+        }
+        /* Responsive */
+        @media (max-width:900px){
+            .card{flex-direction:column-reverse}
+            .carousel-wrap{width:100%;max-width:none;min-width:0;height:320px}
+            .content{padding:18px}
+            #sidebar-toggle {
+                position: fixed;
+                top: 15px;
+                left: 15px;
+            }
+        }
+        @media (max-width: 500px) {
+            .sidebar {
+                width: 90%;
+            }
+        }
+    </style>
 </head>
 <body>
-<div class="overlay" id="sidebar-overlay"></div>
-<div class="sidebar" id="sidebar">
-    <button class="close-sidebar" id="close-sidebar-btn">×</button> 
-    <h3>תוכן עניינים ✨</h3>
-    <ul>
-        <li><a href="#product-description">אודות המוצר</a></li>
-        <li><a href="#how-it-works">איך זה עובד?</a></li>
-        <li><a href="#benefits">יתרונות הסבון</a></li>
-        <li><a href="#ingredients">רכיבים טבעיים</a></li>
-        <li><a href="#faq">שאלות נפוצות</a></li>
-        <li><a href="#order-form">הזמנה ותשלום</a></li>
-    </ul>
-    <p style="margin-top: 30px; font-size: 14px; color: #666;">
-        לכל שאלה נוספת, ניתן ליצור קשר.
-    </p>
-</div>
-
-<div class="app">
-    <button id="sidebar-toggle">תפריט ☰</button>
-    <div class="logo-container">
-        <img src="https://i.imgur.com/sLoJrqk.png" alt="לוגו טבעי" class="logo">
+    <div class="overlay" id="sidebar-overlay"></div>
+    <div class="sidebar" id="sidebar">
+        <button class="close-sidebar" id="close-sidebar-btn">×</button> 
+        <h3>תוכן עניינים ✨</h3>
+        <ul>
+            <li><a href="#product-description">אודות המוצר</a></li>
+            <li><a href="#how-it-works">איך זה עובד?</a></li>
+            <li><a href="#benefits">יתרונות הסבון</a></li>
+            <li><a href="#ingredients">רכיבים טבעיים</a></li>
+            <li><a href="#faq">שאלות נפוצות</a></li>
+            <li><a href="#order-form">הזמנה ותשלום</a></li>
+        </ul>
+        <p style="margin-top: 30px; font-size: 14px; color: #666;">
+            לכל שאלה נוספת, ניתן ליצור קשר.
+        </p>
     </div>
-    <div class="card" role="application">
-        <div class="content">
 
-            <h1>🧼 סבון טבעי מחלב אם: מתנת הטבע לעור הרך</h1>
-
-            <p class="lead" id="product-description">
-                הכירו את הסבון הטבעי המיוחד שלנו, המשלב את כל הטוב שבחלב אם עם שמנים ורכיבים בוטניים אורגניים. פתרון מושלם לעור רגיש, יבש או מגורה.
-            </p>
-
-            <p class="natural-text">
-                **מיוצר באהבה ובשיטה מסורתית קרה** – לשמירה מקסימלית על הרכיבים הפעילים והמינרלים בחלב האם.
-            </p>
-
-            <hr>
-
-            <h2 id="benefits">🌿 יתרונות הסבון הטבעי</h2>
-            <ul>
-                <li>**הזנה ורכות:** חלב אם עשיר בנוגדנים, ויטמינים ושומנים חיוניים המזינים את עור התינוק והאם.</li>
-                <li>**הקלה והרגעת עור:** מומלץ במיוחד לעור הסובל מאקזמה, פריחה או גירויים (כולל "כובע" בראש התינוק).</li>
-                <li>**100% טבעי:** ללא SLS, פראבנים, חומרי ריח סינטטיים או כימיקלים קשים.</li>
-            </ul>
-
-            <h2 id="ingredients">🌱 רכיבים וייצור</h2>
-            <p>
-                הסבון שלנו מכיל תערובת מנצחת של חלב אם, **שמן זית כתית מעולה**, **חמאת שיאה** ושמנים אתריים עדינים. כל סבון מיוצר בתהליך ייצור קפדני (Cold Process) השומר על תכונות הריכוך והלחות של הרכיבים.
-            </p>
-
-            <h2 id="order-form">🎁 הזמנה ותשלום</h2>
-            
-            <div class="cta" style="margin-top: 30px;">
-                <button class="btn" id="openOrderModalBtn" style="width: 100%;">להזמנה ולמעבר לתשלום 🛒</button>
-            </div>
-            
+    <div class="app">
+        <button id="sidebar-toggle">תפריט ☰</button>
+        <div class="logo-container">
+            <img src="https://i.imgur.com/sLoJrqk.png" alt="לוגו טבעי" class="logo">
         </div>
+        <div class="card" role="application">
+            <div class="content">
 
-        <div class="carousel-wrap" aria-roledescription="carousel">
-            <div class="slides-container">
-                <div class="slides" id="slides">
-                    <div class="slide"><img alt="סבון מחלב אם טבעי" src="https://i.imgur.com/CQZCkT5.jpeg"/></div>
+                <h1>🧼 סבון טבעי מחלב אם: מתנת הטבע לעור הרך</h1>
+
+                <p class="lead" id="product-description">
+                    הכירו את הסבון הטבעי המיוחד שלנו, המשלב את כל הטוב שבחלב אם עם שמנים ורכיבים בוטניים אורגניים. פתרון מושלם לעור רגיש, יבש או מגורה.
+                </p>
+
+                <p class="natural-text">
+                    **מיוצר באהבה ובשיטה מסורתית קרה** – לשמירה מקסימלית על הרכיבים הפעילים והמינרלים בחלב האם.
+                </p>
+
+                <hr>
+
+                <h2 id="benefits">🌿 יתרונות הסבון הטבעי</h2>
+                <ul>
+                    <li>**הזנה ורכות:** חלב אם עשיר בנוגדנים, ויטמינים ושומנים חיוניים המזינים את עור התינוק והאם.</li>
+                    <li>**הקלה והרגעת עור:** מומלץ במיוחד לעור הסובל מאקזמה, פריחה או גירויים (כולל "כובע" בראש התינוק).</li>
+                    <li>**100% טבעי:** ללא SLS, פראבנים, חומרי ריח סינטטיים או כימיקלים קשים.</li>
+                </ul>
+
+                <h2 id="ingredients">🌱 רכיבים וייצור</h2>
+                <p>
+                    הסבון שלנו מכיל תערובת מנצחת של חלב אם, **שמן זית כתית מעולה**, **חמאת שיאה** ושמנים אתריים עדינים. כל סבון מיוצר בתהליך ייצור קפדני (Cold Process) השומר על תכונות הריכוך והלחות של הרכיבים.
+                </p>
+
+                <h2 id="order-form">🎁 הזמנה ותשלום</h2>
+                
+                <div class="cta" style="margin-top: 30px;">
+                    <button class="btn" id="openOrderModalBtn" style="width: 100%;">להזמנה ולמעבר לתשלום 🛒</button>
+                </div>
+                
+            </div>
+
+            <div class="carousel-wrap" aria-roledescription="carousel">
+                <div class="slides-container">
+                    <div class="slides" id="slides">
+                        <div class="slide"><img alt="סבון מחלב אם טבעי" src="https://i.imgur.com/CQZCkT5.jpeg"/></div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="modal" id="shippingModal">
-    <div class="modal-content">
-        <h2>הזמנה ופרטי משלוח 📦</h2>
-        <p>אנא בחרו כמות ומלאו פרטים:</p>
-        
-        <div class="form-group" style="text-align: center;">
-            <label for="copies" style="font-size: 16px; margin-bottom: 8px;">כמות סבונים (יחידות):</label>
-            <select id="copies" style="width: 100px;">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-            </select>
-            <div class="price-container" style="margin-top: 15px;">
-                <span class="old-price" id="oldPrice" style="font-size: 14px;"></span>
-                <div class="price" id="totalPrice" style="font-size: 24px;">₪45</div>
-            </div>
-        </div>
-
-        <div class="coupon-section">
-            <div class="coupon-input-group">
-                <input type="text" id="couponCode" placeholder="קוד קופון">
-                <button type="button" class="btn-apply" id="applyCouponBtn">החל</button>
-            </div>
-            <div class="coupon-msg" id="couponMsg"></div>
-        </div>
-        <hr style="border: 0; border-top: 1px dashed #eee; margin: 20px 0;">
-
-        <div class="form-group"><label for="shippingName">שם מלא</label><input type="text" id="shippingName" required placeholder="שם ושם משפחה"></div>
-        <div class="form-group"><label for="shippingPhone">טלפון</label><input type="tel" id="shippingPhone" required placeholder="05X-XXXXXXX"></div>
-        <div class="form-group"><label for="shippingEmail">דוא"ל</label><input type="email" id="shippingEmail" required placeholder="example@mail.com"></div>
-        <div class="form-group"><label for="shippingCity">עיר</label><input type="text" id="shippingCity" required placeholder="לדוגמה: תל אביב"></div>
-        <div class="form-group"><label for="shippingAddress">כתובת מלאה</label><input type="text" id="shippingAddress" required placeholder="רחוב, מספר בית, דירה"></div>
-        <div class="modal-buttons">
-            <button class="btn" id="continueToPaymentBtn">המשך לתשלום (Bit / כרטיס)</button>
-            <button class="btn close-modal" data-modal="shippingModal">ביטול</button>
-        </div>
-    </div>
-</div>
-
-<div class="modal" id="paymentModal">
-    <div class="modal-content">
-        <h2 id="paymentModalTitle">שלב התשלום</h2>
-        <p><strong>סכום לתשלום: <span id="paymentTotalAmount">₪45</span></strong></p>
-        <p>לאחר לחיצה על "מעבר לתשלום" תישלח אליכם **הזמנת תשלום** (לינק) במייל/SMS, ופרטי ההזמנה שלכם יועברו לטיפול.</p>
-        <div class="modal-buttons">
-            <button class="btn" id="openBitApp">מעבר לתשלום מאובטח</button>
-            <button class="btn close-modal" data-modal="paymentModal">ביטול</button>
-        </div>
-    </div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-
-<script>
-    // 🛑 STEP 1: Replace 'YOUR_USER_ID' with your actual EmailJS User ID
-    emailjs.init('ecHybfD_vT68aQGnO'); 
-
-    const PRICE_PER_BOOK = 45; 
-    
-    // --- Coupon Logic Variables ---
-    const COUPONS = {
-        'TALYA20': 0.20, 
-        'TALYA10': 0.10  
-    };
-    let isDiscountApplied = false;
-    let discountRate = 0; 
-
-    // Elements
-    const copiesInput = document.getElementById('copies');
-    const totalPriceEl = document.getElementById('totalPrice');
-    const oldPriceEl = document.getElementById('oldPrice'); 
-    
-    // NEW: Button to open the order modal
-    const openOrderModalBtn = document.getElementById('openOrderModalBtn'); 
-
-    const shippingModal = document.getElementById('shippingModal');
-    const continueToPaymentBtn = document.getElementById('continueToPaymentBtn');
-    const paymentModal = document.getElementById('paymentModal');
-    const paymentTotalAmount = document.getElementById('paymentTotalAmount');
-    const openBitApp = document.getElementById('openBitApp'); 
-
-    // Coupon Elements
-    const couponInput = document.getElementById('couponCode');
-    const applyCouponBtn = document.getElementById('applyCouponBtn');
-    const couponMsg = document.getElementById('couponMsg');
-
-    // Sidebar Elements
-    const sidebar = document.getElementById('sidebar');
-    const sidebarToggle = document.getElementById('sidebar-toggle');
-    const closeSidebarBtn = document.getElementById('close-sidebar-btn');
-    const sidebarOverlay = document.getElementById('sidebar-overlay');
-
-
-    let currentOrderData = {};
-
-    function updateTotal() {
-        const quantity = parseInt(copiesInput.value) || 1;
-        let total = PRICE_PER_BOOK * quantity;
-        
-        if (isDiscountApplied) {
-            const originalTotal = total;
-            total = total * (1 - discountRate);
-            total = Math.round(total);  
+    <div class="modal" id="shippingModal">
+        <div class="modal-content">
+            <h2>הזמנה ופרטי משלוח 📦</h2>
+            <p>אנא בחרו כמות ומלאו פרטים:</p>
             
-            oldPriceEl.textContent = `₪${originalTotal}`;
-            oldPriceEl.classList.add('show');
-        } else {
-            oldPriceEl.classList.remove('show');
-        }
+            <div class="form-group" style="text-align: center;">
+                <label for="copies" style="font-size: 16px; margin-bottom: 8px;">כמות סבונים (יחידות):</label>
+                <select id="copies" style="width: 100px;">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+                <div class="price-container" style="margin-top: 15px;">
+                    <span class="old-price" id="oldPrice" style="font-size: 14px;"></span>
+                    <div class="price" id="totalPrice" style="font-size: 24px;">₪45</div>
+                </div>
+            </div>
 
-        totalPriceEl.textContent = `₪${total}`;
-        paymentTotalAmount.textContent = `₪${total}`; 
-    }
+            <div class="coupon-section">
+                <div class="coupon-input-group">
+                    <input type="text" id="couponCode" placeholder="קוד קופון">
+                    <button type="button" class="btn-apply" id="applyCouponBtn">החל</button>
+                </div>
+                <div class="coupon-msg" id="couponMsg"></div>
+            </div>
+            <hr style="border: 0; border-top: 1px dashed #eee; margin: 20px 0;">
 
-    function applyCoupon() {
-        const inputCode = couponInput.value.trim().toUpperCase();
+            <div class="form-group"><label for="shippingName">שם מלא</label><input type="text" id="shippingName" required placeholder="שם ושם משפחה"></div>
+            <div class="form-group"><label for="shippingPhone">טלפון</label><input type="tel" id="shippingPhone" required placeholder="05X-XXXXXXX"></div>
+            <div class="form-group"><label for="shippingEmail">דוא"ל</label><input type="email" id="shippingEmail" required placeholder="example@mail.com"></div>
+            <div class="form-group"><label for="shippingCity">עיר</label><input type="text" id="shippingCity" required placeholder="לדוגמה: תל אביב"></div>
+            <div class="form-group"><label for="shippingAddress">כתובת מלאה</label><input type="text" id="shippingAddress" required placeholder="רחוב, מספר בית, דירה"></div>
+            <div class="modal-buttons">
+                <button class="btn" id="continueToPaymentBtn">המשך לתשלום (Bit / כרטיס)</button>
+                <button class="btn close-modal" data-modal="shippingModal">ביטול</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal" id="paymentModal">
+        <div class="modal-content">
+            <h2 id="paymentModalTitle">שלב התשלום</h2>
+            <p><strong>סכום לתשלום: <span id="paymentTotalAmount">₪45</span></strong></p>
+            <p>לאחר לחיצה על "מעבר לתשלום" תישלח אליכם **הזמנת תשלום** (לינק) במייל/SMS, ופרטי ההזמנה שלכם יועברו לטיפול.</p>
+            <div class="modal-buttons">
+                <button class="btn" id="openBitApp">מעבר לתשלום מאובטח</button>
+                <button class="btn close-modal" data-modal="paymentModal">ביטול</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    
+    <script>
+        // 🛑 STEP 1: Replace 'YOUR_USER_ID' with your actual EmailJS User ID
+        emailjs.init('ecHybfD_vT68aQGnO'); 
+
+        const PRICE_PER_BOOK = 45; 
         
-        if (COUPONS.hasOwnProperty(inputCode)) {
-            if (!isDiscountApplied) {
-                isDiscountApplied = true;
-                discountRate = COUPONS[inputCode]; 
-                const discountPercent = discountRate * 100;
+        // --- Coupon Logic Variables ---
+        const COUPONS = {
+            'TALYA20': 0.20, 
+            'TALYA10': 0.10  
+        };
+        let isDiscountApplied = false;
+        let discountRate = 0; 
 
-                couponMsg.textContent = `הקופון הופעל בהצלחה! (${discountPercent}% הנחה)`;
-                couponMsg.className = "coupon-msg success";
+        // Elements
+        const copiesInput = document.getElementById('copies');
+        const totalPriceEl = document.getElementById('totalPrice');
+        const oldPriceEl = document.getElementById('oldPrice'); 
+        
+        // NEW: Button to open the order modal
+        const openOrderModalBtn = document.getElementById('openOrderModalBtn'); 
+
+        const shippingModal = document.getElementById('shippingModal');
+        const continueToPaymentBtn = document.getElementById('continueToPaymentBtn');
+        const paymentModal = document.getElementById('paymentModal');
+        const paymentTotalAmount = document.getElementById('paymentTotalAmount');
+        const openBitApp = document.getElementById('openBitApp'); 
+
+        // Coupon Elements
+        const couponInput = document.getElementById('couponCode');
+        const applyCouponBtn = document.getElementById('applyCouponBtn');
+        const couponMsg = document.getElementById('couponMsg');
+
+        // Sidebar Elements
+        const sidebar = document.getElementById('sidebar');
+        const sidebarToggle = document.getElementById('sidebar-toggle');
+        const closeSidebarBtn = document.getElementById('close-sidebar-btn');
+        const sidebarOverlay = document.getElementById('sidebar-overlay');
+
+
+        let currentOrderData = {};
+
+        function updateTotal() {
+            const quantity = parseInt(copiesInput.value) || 1;
+            let total = PRICE_PER_BOOK * quantity;
+            
+            if (isDiscountApplied) {
+                const originalTotal = total;
+                total = total * (1 - discountRate);
+                total = Math.round(total);  
                 
-                couponInput.disabled = true; 
-                applyCouponBtn.disabled = true;
-                applyCouponBtn.textContent = "V";
-                updateTotal();
+                oldPriceEl.textContent = `₪${originalTotal}`;
+                oldPriceEl.classList.add('show');
+            } else {
+                oldPriceEl.classList.remove('show');
             }
-        } else if (inputCode === "") {
-            couponMsg.textContent = "אנא הזן קוד קופון";
-            couponMsg.className = "coupon-msg error";
-        } else {
-            couponMsg.textContent = "קוד קופון שגוי";
-            couponMsg.className = "coupon-msg error";
+
+            totalPriceEl.textContent = `₪${total}`;
+            paymentTotalAmount.textContent = `₪${total}`; 
         }
-    }
 
+        function applyCoupon() {
+            const inputCode = couponInput.value.trim().toUpperCase();
+            
+            if (COUPONS.hasOwnProperty(inputCode)) {
+                if (!isDiscountApplied) {
+                    isDiscountApplied = true;
+                    discountRate = COUPONS[inputCode]; 
+                    const discountPercent = discountRate * 100;
 
-    function closeModal(modalElement) {
-        modalElement.classList.remove('show');
-    }
-
-    // --- Sidebar Logic ---
-    function toggleSidebar() {
-        sidebar.classList.toggle('open');
-        sidebarOverlay.classList.toggle('show');
-    }
-
-    sidebarToggle.addEventListener('click', toggleSidebar);
-    closeSidebarBtn.addEventListener('click', toggleSidebar);
-    sidebarOverlay.addEventListener('click', toggleSidebar);
-    
-    document.querySelectorAll('.sidebar a').forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = link.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                targetElement.scrollIntoView({ behavior: 'smooth' });
-                toggleSidebar();
+                    couponMsg.textContent = `הקופון הופעל בהצלחה! (${discountPercent}% הנחה)`;
+                    couponMsg.className = "coupon-msg success";
+                    
+                    couponInput.disabled = true; 
+                    applyCouponBtn.disabled = true;
+                    applyCouponBtn.textContent = "V";
+                    updateTotal();
+                }
+            } else if (inputCode === "") {
+                couponMsg.textContent = "אנא הזן קוד קופון";
+                couponMsg.className = "coupon-msg error";
+            } else {
+                couponMsg.textContent = "קוד קופון שגוי";
+                couponMsg.className = "coupon-msg error";
             }
+        }
+
+
+        function closeModal(modalElement) {
+            modalElement.classList.remove('show');
+        }
+
+        // --- Sidebar Logic ---
+        function toggleSidebar() {
+            sidebar.classList.toggle('open');
+            sidebarOverlay.classList.toggle('show');
+        }
+
+        sidebarToggle.addEventListener('click', toggleSidebar);
+        closeSidebarBtn.addEventListener('click', toggleSidebar);
+        sidebarOverlay.addEventListener('click', toggleSidebar);
+        
+        document.querySelectorAll('.sidebar a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                    toggleSidebar();
+                }
+            });
         });
-    });
 
-    // --- Email Sending Function ---
-    function sendOrderEmail() {
-        if (Object.keys(currentOrderData).length === 0) {
-            console.error('Error: No order data available for email sending.');
-            return;
+        // --- Email Sending Function ---
+        function sendOrderEmail() {
+            if (Object.keys(currentOrderData).length === 0) {
+                console.error('Error: No order data available for email sending.');
+                return;
+            }
+
+            emailjs.send('service_cprtttd', 'template_m39ushb', {
+                to_email: 'c203240130@gmail.com', 
+                name: currentOrderData.name,
+                phone: currentOrderData.phone,
+                email: currentOrderData.email,
+                city: currentOrderData.city,
+                address: currentOrderData.address,
+                copies: currentOrderData.copies,
+                total: currentOrderData.totalPrice,
+                product_name: "סבון טבעי מחלב אם" 
+            })
+            .then(function(response) {
+                console.log('SUCCESS! Order details sent to seller.', response.status, response.text);
+            }, function(error) {
+                console.log('FAILED to send order details.', error);
+            });
         }
 
-        emailjs.send('service_cprtttd', 'template_m39ushb', {
-            to_email: 'c203240130@gmail.com', 
-            name: currentOrderData.name,
-            phone: currentOrderData.phone,
-            email: currentOrderData.email,
-            city: currentOrderData.city,
-            address: currentOrderData.address,
-            copies: currentOrderData.copies,
-            total: currentOrderData.totalPrice,
-            product_name: "סבון טבעי מחלב אם" 
-        })
-        .then(function(response) {
-            console.log('SUCCESS! Order details sent to seller.', response.status, response.text);
-        }, function(error) {
-            console.log('FAILED to send order details.', error);
+
+        // --- Event Listeners and Logic ---
+        
+        // NEW: Open Shipping Modal
+        openOrderModalBtn.addEventListener('click', ()=>{ 
+            updateTotal();
+            shippingModal.classList.add('show'); 
         });
-    }
 
-
-    // --- Event Listeners and Logic ---
-    
-    // NEW: Open Shipping Modal
-    openOrderModalBtn.addEventListener('click', ()=>{ 
-        updateTotal();
-        shippingModal.classList.add('show'); 
-    });
-
-    // Price and Coupon Logic moved to be active inside the modal
-    copiesInput.addEventListener('change', updateTotal);
-    applyCouponBtn.addEventListener('click', applyCoupon);
-    couponInput.addEventListener('keypress', function (e) {
-        if (e.key === 'Enter') {
-            applyCoupon();
-        }
-    });
-    
-    updateTotal(); 
-
-
-    // Carousel Logic (kept for basic image display)
-    (function(){
-        const slidesEl = document.getElementById('slides');
-        const slides = Array.from(slidesEl.children);
-        if (slides.length <= 1) return; // Disable carousel if only one slide
-        // const dotsEl = document.getElementById('dots'); // לא קיים ב-HTML
-        // const prev = document.getElementById('prev'); // לא קיים ב-HTML
-        // const next = document.getElementById('next'); // לא קיים ב-HTML
-        let index = 0;
-        const intervalMs = 3000;
-        let timer = null;
-        
-
-        function update(){
-            if (slidesEl) slidesEl.style.transform = `translateX(${-index*100}%)`;
-        }
-
-        function nextSlide(){ index = (index+1) % slides.length; update(); }
-        function prevSlide(){ index = (index-1 + slides.length) % slides.length; update(); }
-        function goTo(i){ index = ((i%slides.length)+slides.length)%slides.length; update(); resetTimer(); }
-
-        function startTimer(){ if(timer) clearInterval(timer); timer = setInterval(nextSlide, intervalMs); }
-        function resetTimer(){ startTimer(); }
-        startTimer();
-
-        const carouselWrap = document.querySelector('.carousel-wrap');
-        carouselWrap.addEventListener('mouseenter', ()=>{ if(timer) clearInterval(timer); });
-        carouselWrap.addEventListener('mouseleave', ()=>{ startTimer(); });
-
-        update();
-    })();
-
-
-    // Handle 'Continue to Payment' button (Validation & Data Storage)
-    continueToPaymentBtn.addEventListener('click', (e)=>{
-        const name = document.getElementById('shippingName').value.trim();
-        const phone = document.getElementById('shippingPhone').value.trim();
-        const email = document.getElementById('shippingEmail').value.trim();
-        const city = document.getElementById('shippingCity').value.trim();
-        const address = document.getElementById('shippingAddress').value.trim();
-        const copies = copiesInput.value;
-        const totalPrice = paymentTotalAmount.textContent;
-        
-        if (!name || !phone || !email || !city || !address) {
-            alert('אנא מלאו את כל פרטי המשלוח הנדרשים.');
-            return;
-        }
-        
-        currentOrderData = { name, phone, email, city, address, copies, totalPrice }; 
-
-        closeModal(shippingModal);
-        paymentModal.classList.add('show');
-    });
-
-    openBitApp.addEventListener('click', ()=>{
-        sendOrderEmail(); 
-        alert('פרטי ההזמנה נשלחו בהצלחה! כעת תועברו למערכת התשלום (סימולציה).');
-        window.open('https://example.com/payment-link', '_blank');
-
-        closeModal(paymentModal);
-    });
-
-
-    // Close Modals using the 'ביטול' buttons or outside click
-    document.querySelectorAll('.close-modal').forEach(button => {
-        button.addEventListener('click', () => {
-            const modalId = button.dataset.modal || (button.closest('.modal') ? button.closest('.modal').id : null);
-            if (modalId) {
-                closeModal(document.getElementById(modalId));
+        // Price and Coupon Logic moved to be active inside the modal
+        copiesInput.addEventListener('change', updateTotal);
+        applyCouponBtn.addEventListener('click', applyCoupon);
+        couponInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                applyCoupon();
             }
         });
-    });
+        
+        updateTotal(); 
 
-    document.querySelectorAll('.modal').forEach(modal => {
-        modal.addEventListener('click', (e) => { 
-            if(e.target === modal){ 
-                closeModal(modal);
-            } 
+
+        // Carousel Logic (kept for basic image display)
+        (function(){
+            const slidesEl = document.getElementById('slides');
+            const slides = Array.from(slidesEl.children);
+            if (slides.length <= 1) return; // Disable carousel if only one slide
+            // const dotsEl = document.getElementById('dots'); // לא קיים ב-HTML
+            // const prev = document.getElementById('prev'); // לא קיים ב-HTML
+            // const next = document.getElementById('next'); // לא קיים ב-HTML
+            let index = 0;
+            const intervalMs = 3000;
+            let timer = null;
+            
+
+            function update(){
+                if (slidesEl) slidesEl.style.transform = `translateX(${-index*100}%)`;
+            }
+
+            function nextSlide(){ index = (index+1) % slides.length; update(); }
+            function prevSlide(){ index = (index-1 + slides.length) % slides.length; update(); }
+            function goTo(i){ index = ((i%slides.length)+slides.length)%slides.length; update(); resetTimer(); }
+
+            function startTimer(){ if(timer) clearInterval(timer); timer = setInterval(nextSlide, intervalMs); }
+            function resetTimer(){ startTimer(); }
+            startTimer();
+
+            const carouselWrap = document.querySelector('.carousel-wrap');
+            carouselWrap.addEventListener('mouseenter', ()=>{ if(timer) clearInterval(timer); });
+            carouselWrap.addEventListener('mouseleave', ()=>{ startTimer(); });
+
+            update();
+        })();
+
+
+        // Handle 'Continue to Payment' button (Validation & Data Storage)
+        continueToPaymentBtn.addEventListener('click', (e)=>{
+            const name = document.getElementById('shippingName').value.trim();
+            const phone = document.getElementById('shippingPhone').value.trim();
+            const email = document.getElementById('shippingEmail').value.trim();
+            const city = document.getElementById('shippingCity').value.trim();
+            const address = document.getElementById('shippingAddress').value.trim();
+            const copies = copiesInput.value;
+            const totalPrice = paymentTotalAmount.textContent;
+            
+            if (!name || !phone || !email || !city || !address) {
+                alert('אנא מלאו את כל פרטי המשלוח הנדרשים.');
+                return;
+            }
+            
+            currentOrderData = { name, phone, email, city, address, copies, totalPrice }; 
+
+            closeModal(shippingModal);
+            paymentModal.classList.add('show');
         });
-    });
-</script>
+
+        openBitApp.addEventListener('click', ()=>{
+            sendOrderEmail(); 
+            alert('פרטי ההזמנה נשלחו בהצלחה! כעת תועברו למערכת התשלום (סימולציה).');
+            window.open('https://example.com/payment-link', '_blank');
+
+            closeModal(paymentModal);
+        });
+
+
+        // Close Modals using the 'ביטול' buttons or outside click
+        document.querySelectorAll('.close-modal').forEach(button => {
+            button.addEventListener('click', () => {
+                const modalId = button.dataset.modal || (button.closest('.modal') ? button.closest('.modal').id : null);
+                if (modalId) {
+                    closeModal(document.getElementById(modalId));
+                }
+            });
+        });
+
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', (e) => { 
+                if(e.target === modal){ 
+                    closeModal(modal);
+                } 
+            });
+        });
+    </script>
 </body>
 
 </html>
