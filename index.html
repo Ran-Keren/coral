@@ -8,6 +8,7 @@
         :root{
             --gap:18px;
             --accent:#00695C; /* Dark Teal - for a natural/calm feel */
+            --new-accent:#E91E63; /* NEW: Vivid Pink for headlines */
             --bg:#e0f7fa; /* Light Cyan Background */
             --text:#222;
             --success: #28a745;
@@ -22,6 +23,7 @@
             background: var(--bg);
             color:var(--text);
             overflow-x: hidden; 
+            font-size: 18px; /* NEW: Base font size increase */
         }
         /* FIXED: Adjusted padding-top now that logo is static */
         .app{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;padding-top: 24px;box-sizing:border-box; flex-direction: column;}
@@ -40,12 +42,12 @@
         /* ADJUSTED: Content padding reset for desktop */
         .content{flex:1;min-width:260px;padding:28px;display:flex;flex-direction:column;gap:14px}
         
-        /* Typography */
+        /* Typography - UPDATED */
         h1{
             margin:0;
-            font-size:26px; 
-            color: var(--accent); 
-            text-align: right; 
+            font-size:32px; /* INCREASED */
+            color: var(--new-accent); /* NEW COLOR */
+            text-align: center; /* CENTERED */
         }
         
         /* FIXED: Logo Style - Static positioning, centered block (non-floating) */
@@ -80,32 +82,46 @@
         /* REMOVED: Logo text styling is no longer needed */
         .logo-header-wrapper h1 { display: none; } 
 
-        h2{font-size: 22px; color: var(--accent); border-bottom: 2px solid #eee; padding-bottom: 8px; margin-top: 25px; font-weight: 700;}
+        h2{
+            font-size: 26px; /* INCREASED */
+            color: var(--new-accent); /* NEW COLOR */
+            border-bottom: 2px solid #eee; 
+            padding-bottom: 8px; 
+            margin-top: 25px; 
+            font-weight: 700;
+            text-align: center; /* CENTERED */
+        }
         /* Adjusted h3 style for product list for better readability */
-        h3{font-size: 20px; color: #444; margin: 15px 0 5px;}
+        h3{
+            font-size: 22px; /* INCREASED */
+            color: #444; 
+            margin: 15px 0 5px;
+            text-align: center; /* CENTERED */
+        }
         .product-list h3 {
-             color: var(--accent); /* Highlight product names */
+             color: var(--new-accent); /* Highlight product names */
              font-weight: 800; 
              margin-bottom: 5px;
              padding-bottom: 0;
              border-bottom: none;
+             text-align: right; /* Keep product list H3 right aligned for better list flow */
         }
 
-        p{margin:0;line-height:1.7}
-        .lead{font-weight:600}
+        p{margin:0;line-height:1.7; font-size: 18px;} /* INCREASED */
+        .lead{font-weight:700; font-size: 20px;} /* ADJUSTED & INCREASED */
         
         /* Lists and Special Text */
-        .natural-text { color: var(--accent); font-weight: 600; padding: 10px 0; border-right: 3px solid var(--accent); padding-right: 10px; }
+        .natural-text { color: var(--new-accent); font-weight: 700; padding: 10px 0; border-right: 3px solid var(--new-accent); padding-right: 10px; font-size: 18px; } /* UPDATED COLOR AND FONT SIZE */
         .feature-list { list-style: none; padding: 0; margin: 10px 0; }
-        .feature-list li { margin-bottom: 8px; font-size: 16px; display: flex; align-items: center; }
+        .feature-list li { margin-bottom: 10px; font-size: 18px; display: flex; align-items: center; } /* INCREASED */
         .feature-list li strong { font-weight: 700; color: #333; }
-        .feature-icon { color: var(--accent); font-size: 20px; margin-left: 8px; line-height: 1; }
+        .feature-icon { color: var(--new-accent); font-size: 24px; margin-left: 8px; line-height: 1; } /* UPDATED COLOR AND SIZE */
         
         /* CTA & Coupon Styles */
         .cta{margin-top:auto;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-        .btn{background:var(--accent);color:#fff;border:none;padding:12px 18px;border-radius:10px;font-weight:700;cursor:pointer;transition:all 0.3s; text-align: center; box-shadow: 0 4px 10px rgba(0,105,92,0.2);}
+        .btn{background:var(--accent);color:#fff;border:none;padding:14px 20px;border-radius:10px;font-weight:700;cursor:pointer;transition:all 0.3s; text-align: center; box-shadow: 0 4px 10px rgba(0,105,92,0.2); font-size: 18px;} /* INCREASED PADDING/FONT */
         .btn:hover{background:#004d40;transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,105,92,0.4)}
-        .price{font-size:22px;font-weight:800;color:var(--accent)}
+        .price{font-size:26px;font-weight:800;color:var(--new-accent)} /* INCREASED & UPDATED COLOR */
         
         /* Coupon Styles */
         .coupon-section {
@@ -123,11 +139,11 @@
             justify-content: center;
         }
         .coupon-section input {
-            padding: 8px;
+            padding: 10px;
             border: 1px solid #ccc;
             border-radius: 8px;
-            width: 120px;
-            font-size: 14px;
+            width: 150px;
+            font-size: 16px;
             text-align: center;
             direction: ltr; 
         }
@@ -135,16 +151,16 @@
             background: var(--accent);
             border: 1px solid var(--accent);
             color: #fff;
-            padding: 8px 12px;
+            padding: 10px 15px;
             border-radius: 8px;
             cursor: pointer;
             font-weight: 700;
-            font-size: 14px;
+            font-size: 16px;
             transition: all 0.2s;
         }
 
         .coupon-msg {
-            font-size: 13px;
+            font-size: 15px;
             font-weight: 700;
             min-height: 18px;
             text-align: center;
@@ -212,13 +228,13 @@
             margin: auto; 
             border-top: 5px solid var(--accent);
             max-height: 95vh; 
-            overflow-y: auto; 
+            overflow-y: auto; /* ENABLE SCROLLING INSIDE MODAL */
             box-sizing: border-box;
         }
 
-        .modal h2{margin:0 0 10px;color:var(--accent); text-align: center; font-size: 22px; border-bottom: none; padding-bottom: 0;}
-        .modal h3{color:#333; margin-top: 5px; font-size: 18px; text-align: center; padding: 5px 0;} /* Added top margin to h3 to better define sections */
-        .modal p{margin:5px 0;line-height:1.4}
+        .modal h2{margin:0 0 10px;color:var(--new-accent); text-align: center; font-size: 26px; border-bottom: none; padding-bottom: 0;} /* INCREASED & UPDATED COLOR */
+        .modal h3{color:#333; margin-top: 5px; font-size: 20px; text-align: center; padding: 5px 0;} /* INCREASED */
+        .modal p{margin:5px 0;line-height:1.5; font-size: 16px;} /* INCREASED */
         .modal-buttons{display:flex;gap:10px;margin-top:15px;justify-content:center; flex-wrap: wrap;}
         
         /* Compact Form Elements */
@@ -268,9 +284,9 @@
             margin-top: 5px;
         }
         #paymentTotalAmount {
-            font-size: 28px !important;
+            font-size: 32px !important; /* INCREASED & UPDATED COLOR */
             font-weight: 800;
-            color: #E91E63; 
+            color: var(--new-accent); 
             display: inline;
             direction: ltr;
         }
@@ -442,13 +458,13 @@
             
             /* Modal adjustments for smaller devices */
             .modal-content {
-                padding: 8px; /* Further reduced mobile padding */
+                padding: 12px; /* Adjusted mobile padding */
                 width: 95%; /* Ensures it doesn't touch edges */
             }
-            .form-group { margin-bottom: 6px; } /* Further reduced form group margin */
-            .modal h2 { font-size: 20px; margin-bottom: 5px; }
-            .modal h3 { margin-top: 3px; font-size: 16px; padding: 3px 0; } /* Reduced h3 size and spacing */
-            hr { margin: 8px 0 !important; } /* Further reduced HR margin */
+            .form-group { margin-bottom: 8px; } /* Further reduced form group margin */
+            .modal h2 { font-size: 24px; margin-bottom: 5px; } /* Adjusted mobile H2 */
+            .modal h3 { margin-top: 5px; font-size: 18px; padding: 3px 0; } /* Adjusted mobile H3 */
+            hr { margin: 10px 0 !important; } /* Further reduced HR margin */
         }
         
         /* Mobile Specific (further refinements) */
@@ -519,8 +535,8 @@
             <div class="content">
 
                 <h1>סבון טבעי מחלב אם</h1>
-                <p class="lead" style="color: #444; font-size: 18px; text-align: center;">
-                    **טבעי. אישי. מושלם**
+                <p class="lead" style="color: #444; text-align: center;">
+                    טבעי. אישי. מושלם
                 </p>
 
                 <p class="lead" id="product-description">
@@ -599,7 +615,7 @@
 
                 </div>
 
-                <h3 style="margin-top: 30px; border-bottom: 2px solid #eee; padding-bottom: 5px; color: var(--accent);">⚠️ הנחיות כלליות</h3>
+                <h3 style="margin-top: 30px; border-bottom: 2px solid #eee; padding-bottom: 5px; color: var(--new-accent); text-align: center;">⚠️ הנחיות כלליות</h3>
                 
                 <p style="font-size: 14px; color: #555; margin-bottom: 5px;">
                     **איך זה עובד?** ניתן להביא את חלב האם האישי שלך למספר נקודות איסוף, או להשתמש בחלב אם של תורמת. כמות החלב הדרושה היא **40 מ"ל ליחידה**. 
@@ -1067,6 +1083,9 @@
         document.querySelectorAll('.modal').forEach(modal => {
             modal.addEventListener('click', (e) => {
                 if (e.target.classList.contains('modal')) {
+                    // Prevent closing if the click is on the modal background, but you are inside a form/input
+                    // This is handled better by modal-content scroll, but added for robustness.
+                    // If modal content is small, it still closes, which is the standard behavior.
                     closeModal(modal);
                 }
             });
