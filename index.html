@@ -164,7 +164,6 @@
             font-weight: 700;
             min-height: 18px;
             text-align: center;
-            margin-top: 2px;
         }
         .coupon-msg.success { color: var(--success); }
         .coupon-msg.error { color: var(--error); }
@@ -333,6 +332,36 @@
             max-width: 380px; /* Adjusted max width for better mobile fit */
         }
         
+        /* --- General Instructions List with Red Bullets (UPDATED FOR RED TEXT) --- */
+        .general-instructions-list {
+            list-style: none; 
+            padding-right: 20px; 
+            margin-top: 10px;
+            font-size: 16px; 
+        }
+        .general-instructions-list li {
+            position: relative;
+            margin-bottom: 8px; 
+            padding-right: 12px; 
+            color: var(--error); /* MADE ALL TEXT RED */
+            line-height: 1.5;
+        }
+        /* Custom red bullet for all items */
+        .general-instructions-list li::before {
+            content: '•'; 
+            position: absolute;
+            right: 0;
+            color: var(--error); /* Red color for the bullet */
+            font-weight: 900;
+            font-size: 1.2em;
+            top: 0;
+        }
+        /* Style for the last, important item (keep bold) */
+        .general-instructions-list li.important-note {
+            font-weight: 700; /* Keep bold for the last one for extra emphasis */
+            margin-bottom: 0;
+        }
+        
         /* --- Sidebar Styles (UPDATED TO FLOATING/FIXED TOGGLE) --- */
         #sidebar-toggle {
             /* FIXED: Floating Styles */
@@ -470,7 +499,7 @@
             
             /* NEW: Reduced font for feature list items on mobile */
             .feature-list li { 
-                font-size: 16px; 
+                font-size: 15px; /* FURTHER REDUCED for better mobile fit */
             }
             
             /* Modal adjustments for smaller devices */
@@ -647,11 +676,11 @@
                     איך זה עובד? ניתן להביא את חלב האם האישי שלך למספר נקודות איסוף, או להשתמש בחלב אם של תורמת. כמות החלב הדרושה היא 40 מ"ל ליחידה. 
                 </p>
                 
-                <ul style="list-style-type: '• '; padding-right: 20px; font-size: 16px; color: #555; margin-top: 10px;">
+                <ul class="general-instructions-list">
                     <li>הסבון אינו תרופה ואינו ראוי למאכל.</li>
                     <li>אין לבלוע, יש להפסיק את השימוש במקרה של גירוי.</li>
                     <li>היות שמדובר באל-סבון עבודת יד, הרי שהגודל, הצבע, המרקם והמשקל עשויים להשתנות.</li>
-                    <li style="font-weight: 700; color: var(--error);">תוקף הסבון: חודשיים. יש לשמור בקירור.</li>
+                    <li class="important-note">תוקף הסבון: חודשיים. יש לשמור בקירור.</li>
                 </ul>
 
                 <h2 id="order-form">🎁 הזמנה ותשלום</h2>
@@ -1112,8 +1141,6 @@
                 }
             });
         });
-
-        // Scrolling re-enabled by removing the pull-to-refresh code in the previous step.
 
     </script>
 </body>
