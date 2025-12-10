@@ -510,7 +510,7 @@
                 <div class="slides" id="slides">
                     <div class="slide"><img alt="סבון מחלב אם טבעי - תמונה 1" src="https://i.imgur.com/cjbToe2.jpeg"/></div>
                     <div class="slide"><img alt="סבון מחלב אם טבעי - תמונה 2" src="https://i.imgur.com/E1cDUXD.jpeg"/></div>
-                    <div class="slide"><img alt="סבון מחלב אם טבעי - תמונה 3" src="https://i.imgur.com/xGCiRsO.jpeg"/></div>
+                    <div class="slide"><img alt="סבון מחלב אם טבעי - תמונה 3" src="https://i.imgur.com/m2nDchP.jpeg"/></div>
                 </div>
             </div>
         </div>
@@ -1071,6 +1071,28 @@
                 }
             });
         });
+
+        // --- Disable Pull-to-Refresh on iOS/Android browsers ---
+        (function() {
+            let lastY = 0;
+            const body = document.body;
+
+            body.addEventListener('touchstart', function(e) {
+                if (e.touches.length === 1) {
+                    lastY = e.touches[0].clientY;
+                }
+            }, { passive: true });
+
+            body.addEventListener('touchmove', function(e) {
+                const currentY = e.touches[0].clientY;
+                // Only prevent default if the user is at the very top of the page AND scrolling up (pulling down)
+                if (window.scrollY === 0 && currentY > lastY) {
+                    e.preventDefault();
+                }
+                lastY = currentY;
+            }, { passive: false }); 
+        })();
+        // --- End Disable Pull-to-Refresh ---
 
     </script>
 </body>
