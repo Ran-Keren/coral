@@ -323,7 +323,16 @@
         #productSelectionModal #copies {
             width: 100%;
         }
-
+        
+        /* Specific changes for Shipping Modal */
+        #shippingDetailsModal .modal-buttons .btn {
+            padding: 10px 15px; /* Reduced button padding for smaller size */
+            font-size: 16px;
+        }
+        #shippingDetailsModal .modal-content {
+            max-width: 380px; /* Adjusted max width for better mobile fit */
+        }
+        
         /* --- Sidebar Styles (UPDATED TO FLOATING/FIXED TOGGLE) --- */
         #sidebar-toggle {
             /* FIXED: Floating Styles */
@@ -473,6 +482,15 @@
             .modal h2 { font-size: 24px; margin-bottom: 5px; } /* Adjusted mobile H2 */
             .modal h3 { margin-top: 3px; font-size: 18px; padding: 3px 0; margin-bottom: 3px; } /* Adjusted mobile H3 for tighter fit */
             hr { margin: 8px 0 !important; } /* Further reduced HR margin (from 10px) */
+            
+            #shippingDetailsModal .modal-content {
+                max-width: 95vw; /* Ensure it respects overall mobile padding */
+                padding: 15px; /* Slightly more padding for inner content */
+            }
+            #shippingDetailsModal .modal-buttons .btn {
+                padding: 10px 10px; /* Smaller buttons on smallest screen */
+                font-size: 15px;
+            }
         }
         
         /* Mobile Specific (further refinements) */
@@ -725,7 +743,6 @@
         <div class="modal-content">
             <h2>שלב 2: פרטי משלוח והתאמה 🚚</h2>
             
-            <h3>פרטי משלוח</h3>
             <div class="form-group"><label for="shippingName">שם מלא</label><input type="text" id="shippingName" required placeholder="שם ושם משפחה"></div>
             <div class="form-group"><label for="shippingPhone">טלפון</label><input type="tel" id="shippingPhone" required placeholder="05X-XXXXXXX"></div>
             <div class="form-group"><label for="shippingEmail">דוא"ל</label><input type="email" id="shippingEmail" required placeholder="example@mail.com"></div>
@@ -734,7 +751,6 @@
             
             <hr style="border: 0; border-top: 1px dashed #eee; margin: 8px 0;">
 
-            <h3>פרטי התאמה אישית</h3>
             <div class="form-group"><label for="babyAge">גיל התינוק (חודשים)</label><input type="number" id="babyAge" required placeholder="לדוגמה: 3" min="0" max="48"></div>
             <div class="form-group"><label for="allergies">אלרגיות / הערות נוספות (אופציונלי)</label><textarea id="allergies" placeholder="ציין אלרגיות ידועות או בקשות נוספות"></textarea></div>
 
@@ -1097,7 +1113,7 @@
             });
         });
 
-        // NOTE: The code to disable Pull-to-Refresh was removed to re-enable smooth scrolling.
+        // Scrolling re-enabled by removing the pull-to-refresh code in the previous step.
 
     </script>
 </body>
