@@ -219,7 +219,7 @@
         .modal-buttons{display:flex;gap:10px;margin-top:15px;justify-content:center; flex-wrap: wrap;}
         
         /* Compact Form Elements */
-        select{width:100px;padding:5px;border-radius:6px;border:1px solid #ccc;font-size:16px;text-align:center;cursor:pointer; background-color: #f9f9f9;}
+        select{width:100%;padding:8px;border-radius:8px;border:1px solid #ddd;font-size:16px;text-align:right;cursor:pointer; background-color: #f9f9f9;}
         
         .form-group{margin-bottom: 10px; text-align: right;} 
         .form-group label{display: block; margin-bottom: 2px; font-weight: 600; color: #333; font-size: 14px;}
@@ -280,6 +280,23 @@
         }
         #openBitApp:hover {
             background-color: #388E3C;
+        }
+
+        /* NEW: Flex group for total and copies */
+        .total-copies-group {
+             display: flex;
+             justify-content: space-around;
+             align-items: center;
+             margin-bottom: 15px;
+             gap: 15px;
+        }
+        .total-copies-group .form-group {
+             flex: 1;
+             margin-bottom: 0;
+        }
+        .total-copies-group .price-display {
+             flex-shrink: 0;
+             text-align: center;
         }
 
 
@@ -586,6 +603,7 @@
                     <li>הסבון אינו תרופה ואינו ראוי למאכל.</li>
                     <li>אין לבלוע, יש להפסיק את השימוש במקרה של גירוי.</li>
                     <li>היות שמדובר באל-סבון עבודת יד, הרי שהגודל, הצבע, המרקם והמשקל עשויים להשתנות.</li>
+                    <li style="font-weight: 700; color: var(--error);">**תוקף הסבון: חודשיים. יש לשמור בקירור.**</li>
                 </ul>
 
                 <h2 id="order-form">🎁 הזמנה ותשלום</h2>
@@ -603,9 +621,11 @@
         <div class="modal-content">
             <h2>פרטי הזמנה 📝</h2>
             
-            <div class="form-group" style="text-align: center; margin-bottom: 5px;">
-                <label for="copies" style="font-size: 14px; margin-bottom: 2px;">כמות סבונים:</label>
-                <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
+            <h3>בחירת מוצר ועיצוב 🧼</h3>
+            
+            <div class="form-group">
+                <label for="copies">כמות סבונים:</label>
+                <div class="total-copies-group">
                     <select id="copies">
                         <option value="1">1 יח' (₪45)</option>
                         <option value="2">2 יח' (₪90)</option>
@@ -613,9 +633,52 @@
                         <option value="6">6 יח' (₪270)</option>
                         <option value="10">10 יח' (₪450)</option>
                     </select>
-                    <div class="price" id="totalPrice" style="font-size: 24px;">₪45</div>
-                    <span class="old-price" id="oldPrice"></span>
                 </div>
+            </div>
+
+            <div class="form-group">
+                <label for="recipe">שם המתכון / מגע:</label>
+                <select id="recipe" required>
+                    <option value="" disabled selected>בחר מתכון (מגע מזין, מתוק, טהור...)</option>
+                    <option value="מגע מזין">מגע מזין (עור יבש)</option>
+                    <option value="מגע מתוק">מגע מתוק (ריח קקאו עדין)</option>
+                    <option value="מגע טהור">מגע טהור (ניקוי פנים)</option>
+                    <option value="מגע פורח">מגע פורח (עור אדמומי)</option>
+                    <option value="מגע אוהב">מגע אוהב (שיער וקרקפת)</option>
+                    <option value="מגע חמים">מגע חמים (עור יבש במיוחד)</option>
+                    <option value="מגע מגונן">מגע מגונן (עור רגיש / אדמומיות)</option>
+                    <option value="אחר">אחר (יש לציין בהתאמה אישית)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="shape">צורה:</label>
+                <select id="shape" required>
+                    <option value="" disabled selected>בחר צורה</option>
+                    <option value="מלבנית">מלבנית (רגיל)</option>
+                    <option value="שושנה">שושנה</option>
+                    <option value="לב (2 יח' במארז)">לב (2 יח' במארז - חובה לבחור כמות זוגית)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="essentialOil">שמן אתרי:</label>
+                <select id="essentialOil">
+                    <option value="ללא">ללא</option>
+                    <option value="לבנדר">לבנדר</option>
+                    <option value="קמומיל">קמומיל</option>
+                    <option value="עץ התה">עץ התה</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="blessing">הוספת ברכה (טקסט עד 50 אותיות - אופציונלי):</label>
+                <textarea id="blessing" maxlength="50" placeholder="לדוגמה: לילד המתוק שלנו, באהבה גדולה."></textarea>
+            </div>
+            
+            <div class="price-container">
+                <div class="price" id="totalPrice" style="font-size: 24px;">₪45</div>
+                <span class="old-price" id="oldPrice"></span>
             </div>
 
             <div class="coupon-section">
@@ -637,7 +700,7 @@
             
             <h3>פרטי התאמה אישית</h3>
             <div class="form-group"><label for="babyAge">גיל התינוק (חודשים)</label><input type="number" id="babyAge" required placeholder="לדוגמה: 3" min="0" max="48"></div>
-            <div class="form-group"><label for="allergies">אלרגיות / מתכון מותאם אישית (אופציונלי)</label><textarea id="allergies" placeholder="ציין אלרגיות ידועות או בקשה מיוחדת למתכון (מגע מזין, מגע מתוק וכו')"></textarea></div>
+            <div class="form-group"><label for="allergies">אלרגיות / חלב של תורמת (אופציונלי)</label><textarea id="allergies" placeholder="ציין אלרגיות ידועות או אם מדובר בחלב של תורמת"></textarea></div>
 
             <div class="modal-buttons">
                 <button class="btn" id="continueToPaymentBtn" style="flex-grow: 1;">המשך לתשלום</button>
@@ -670,7 +733,7 @@
         // **IMPORTANT:** Replace 'service_cprtttd' and 'template_m39ushb' with your actual service/template IDs
         emailjs.init('ecHybfD_vT68aQGnO'); 
 
-        const PRICE_PER_BOOK = 45; 
+        const PRICE_PER_BOOK = 45; // Changed from BOOK to SOAP but kept the variable name for minimal changes
         
         const COUPONS = {
             'TALYA20': 0.20, // 20% discount
@@ -697,15 +760,17 @@
         const applyCouponBtn = document.getElementById('applyCouponBtn');
         const couponMsg = document.getElementById('couponMsg');
 
+        // NEW ORDER FIELDS
+        const recipeInput = document.getElementById('recipe');
+        const shapeInput = document.getElementById('shape');
+        const essentialOilInput = document.getElementById('essentialOil');
+        const blessingInput = document.getElementById('blessing');
+
         // Sidebar Elements
         const sidebar = document.getElementById('sidebar');
         const sidebarToggle = document.getElementById('sidebar-toggle');
         const closeSidebarBtn = document.getElementById('close-sidebar-btn');
         const sidebarOverlay = document.getElementById('sidebar-overlay');
-
-        // REMOVED: Logo elements for scroll logic
-        // const logoWrapper = document.querySelector('.logo-header-wrapper');
-
 
         let currentOrderData = {};
 
@@ -789,6 +854,18 @@
             if (Object.keys(currentOrderData).length === 0) {
                 return;
             }
+            
+            // Format the product details nicely
+            const productDetails = `
+                כמות: ${currentOrderData.copies} יח'
+                מתכון: ${currentOrderData.recipe}
+                צורה: ${currentOrderData.shape}
+                שמן אתרי: ${currentOrderData.essentialOil}
+                ברכה: ${currentOrderData.blessing || 'ללא'}
+                גיל התינוק: ${currentOrderData.babyAge} חודשים
+                אלרגיות/הערות: ${currentOrderData.allergies || 'ללא'}
+            `.trim();
+
 
             emailjs.send('service_cprtttd', 'template_m39ushb', {
                 to_email: 'c203240130@gmail.com', // **REPLACE WITH THE REAL EMAIL**
@@ -797,10 +874,8 @@
                 email: currentOrderData.email,
                 city: currentOrderData.city,
                 address: currentOrderData.address,
-                copies: currentOrderData.copies,
+                product_details: productDetails, // Pass the formatted product details
                 total: currentOrderData.totalPrice,
-                baby_age: currentOrderData.babyAge,
-                allergies: currentOrderData.allergies,
                 product_name: "סבון טבעי מחלב אם" 
             })
             .then(function(response) {
@@ -876,6 +951,27 @@
             const babyAge = document.getElementById('babyAge').value.trim();
             const allergies = document.getElementById('allergies').value.trim();
             
+            // NEW FIELDS VALIDATION
+            const recipe = recipeInput.value;
+            const shape = shapeInput.value;
+
+            // Simple validation for new fields
+            if (!recipe) {
+                alert('אנא בחרו מתכון/מגע.');
+                return;
+            }
+            if (!shape) {
+                alert('אנא בחרו צורה רצויה.');
+                return;
+            }
+            if (shape.includes('לב') && (copiesInput.value % 2 !== 0)) {
+                 alert('שימו לב: צורת "לב" מגיעה 2 יח\' במארז. אנא בחרו כמות זוגית.');
+                 return;
+            }
+            
+            const essentialOil = essentialOilInput.value;
+            const blessing = blessingInput.value.trim();
+            
             const copies = copiesInput.value;
             const totalPrice = paymentTotalAmount.textContent;
             
@@ -884,7 +980,7 @@
                 return;
             }
             
-            currentOrderData = { name, phone, email, city, address, copies, totalPrice, babyAge, allergies }; 
+            currentOrderData = { name, phone, email, city, address, copies, totalPrice, babyAge, allergies, recipe, shape, essentialOil, blessing }; 
 
             closeModal(shippingModal);
             paymentModal.classList.add('show');
@@ -920,6 +1016,12 @@
                 }
             });
         });
+
+        // Add event listeners for new select elements to ensure they update the form state (though not price)
+        recipeInput.addEventListener('change', ()=>{});
+        shapeInput.addEventListener('change', ()=>{});
+        essentialOilInput.addEventListener('change', ()=>{});
+        blessingInput.addEventListener('input', ()=>{});
     </script>
 </body>
 </html>
