@@ -26,26 +26,34 @@
         /* FIXED: Adjusted padding-top now that logo is static */
         .app{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;padding-top: 24px;box-sizing:border-box; flex-direction: column;}
         
-        .card{width:100%;max-width:1100px;background:linear-gradient(180deg,var(--soft-white),#fbfbfb);border-radius:16px;box-shadow:0 12px 40px rgba(0,0,0,0.15);overflow:hidden;display:flex;gap:var(--gap);flex-direction:row-reverse;}
+        .card{
+            width:100%;
+            max-width:1100px;
+            background:linear-gradient(180deg,var(--soft-white),#fbfbfb);
+            border-radius:16px;
+            box-shadow:0 12px 40px rgba(0,0,0,0.15);
+            overflow:hidden;
+            display:block; /* Changed from flex to block */
+            /* Removed: gap:var(--gap); flex-direction:row-reverse; */
+        }
         
         /* ADJUSTED: Content padding reset for desktop */
         .content{flex:1;min-width:260px;padding:28px;display:flex;flex-direction:column;gap:14px}
         
         /* Typography */
         h1{
-            /* Removed flex properties */
             margin:0;
             font-size:26px; 
             color: var(--accent); 
             text-align: right; 
         }
         
-        /* FIXED: Logo Style - Static positioning, centered block */
+        /* FIXED: Logo Style - Static positioning, centered block (non-floating) */
         .logo-header-wrapper {
             position: static; 
             margin: 0 auto 20px auto; /* Centering block and adding bottom margin */
             padding: 0; 
-            z-index: 1; 
+            z-index: 1; /* Lowered z-index */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -54,9 +62,6 @@
             box-shadow: none; 
             /* Removed transition properties */
         }
-
-        /* REMOVED: Class to hide the logo when scrolled down is no longer needed */
-        /* .logo-header-wrapper.hidden-on-scroll { opacity: 0; visibility: hidden; } */
 
         .logo-container { 
             /* Logo replacement styling - BIGGER */
@@ -146,24 +151,25 @@
         .coupon-msg.success { color: var(--success); }
         .coupon-msg.error { color: var(--error); }
 
-        /* --- Carousel Specific CSS --- */
+        /* --- Carousel Specific CSS (UPDATED FOR FULL WIDTH AND CONTAIN) --- */
         .carousel-wrap{
-            width:520px;
-            max-width:48%;
-            min-width:300px;
-            background: #f5f5f5;
+            width:100%; /* Take full width of the app container */
+            max-width:1100px; /* Match max width of the card */
+            min-width:0; /* Allow it to shrink */
+            background: transparent; /* FIXED: Changed to transparent */
             border-radius:12px;
             overflow:hidden;
             position:relative;
             display:flex;
             align-items:center;
             justify-content:center;
+            /* Center block horizontally */
+            margin: 0 auto 30px auto; 
             /* Added fixed height for image uniformity */
             height: 400px; 
         }
         .slides-container {
             width: 100%;
-            /* Added height 100% to fill the carousel-wrap height */
             height: 100%; 
             overflow: hidden;
         }
@@ -171,7 +177,7 @@
             display: flex;
             transition: transform 0.5s ease-in-out;
             width: 300%; /* Total width for 3 slides */
-            height: 100%; /* Added height 100% */
+            height: 100%; 
             direction: ltr; 
         }
         .slide {
@@ -182,10 +188,8 @@
         }
         .slide img{
             width:100%;
-            /* Ensure height fills the container */
             height:100%;
-            /* CRUCIAL: Makes images same size by covering the area without distortion */
-            object-fit: cover; 
+            object-fit: contain; /* Remains 'contain' to avoid cropping */
             display:block
         }
         /* --- End Carousel Specific CSS --- */
@@ -279,19 +283,14 @@
         }
 
 
-        /* --- Sidebar Styles --- */
+        /* --- Sidebar Styles (UPDATED TO FLOATING/FIXED TOGGLE) --- */
         #sidebar-toggle {
-            /* NEW Static Styles: */
-            position: relative; /* Now it flows normally */
-            margin: 10px 0 10px auto; /* Moves it to the left side (RTL) */
-            display: block;
-            
-            /* REMOVED Floating Styles:
+            /* FIXED: Floating Styles */
             position: fixed; 
             top: 20px;
-            right: 20px; */
+            right: 20px; /* FIXED: Positioned to the right */
+            left: auto; /* Ensure left is not set */
             
-            left: auto; 
             background: var(--accent);
             color: #fff;
             border: none;
@@ -378,9 +377,19 @@
 
         /* Responsive */
         @media (max-width:900px){
-            .card{flex-direction:column-reverse}
+            .card{
+                /* No longer a flex row layout for two main elements */
+                display: block;
+            }
             /* Increased height for mobile */
-            .carousel-wrap{width:100%;max-width:none;min-width:0;height:350px}
+            .carousel-wrap{
+                /* Now full width, no need for min/max width overrides */
+                width:100%;
+                max-width:1100px;
+                min-width:0;
+                height:350px;
+                margin-bottom: 20px; /* Reduced margin for mobile */
+            }
             /* ADJUSTED: Content padding reset for mobile */
             .content{padding:18px;}
             
@@ -393,11 +402,14 @@
                 height: 120px;
             }
             
-            /* ADJUSTED: Sidebar toggle position is now static */
+            /* ADJUSTED: Sidebar toggle position (fixed but adjusted for mobile view) */
             #sidebar-toggle {
-                /* Removed right: 15px; top: 15px; */
-                margin: 10px 0 10px auto; /* Moves it to the left side (RTL) */
-                display: block; 
+                right: 15px; /* FIXED: Adjusting fixed position for mobile */
+                left: auto; /* Ensure left is auto */
+                top: 15px;
+                margin: 0;
+                padding: 8px 12px;
+                font-size: 14px;
                 z-index: 1000;
             }
             
@@ -416,7 +428,6 @@
             }
             
             #sidebar-toggle {
-                /* Removed right: 15px; top: 15px; */
                 padding: 8px 12px;
                 font-size: 14px;
             }
@@ -470,6 +481,15 @@
         
         <button id="sidebar-toggle">תפריט ☰</button>
         
+        <div class="carousel-wrap" aria-roledescription="carousel">
+            <div class="slides-container">
+                <div class="slides" id="slides">
+                    <div class="slide"><img alt="סבון מחלב אם טבעי - תמונה 1" src="https://i.imgur.com/m2nDchP.jpeg"/></div>
+                    <div class="slide"><img alt="סבון מחלב אם טבעי - תמונה 2" src="https://i.imgur.com/t8Y1Jrc.jpeg"/></div>
+                    <div class="slide"><img alt="סבון מחלב אם טבעי - תמונה 3" src="https://i.imgur.com/xGCiRsO.jpeg"/></div>
+                </div>
+            </div>
+        </div>
         <div class="card" role="application">
             
             <div class="content">
@@ -574,17 +594,8 @@
                 </div>
                 
             </div>
-
-            <div class="carousel-wrap" aria-roledescription="carousel">
-                <div class="slides-container">
-                    <div class="slides" id="slides">
-                        <div class="slide"><img alt="סבון מחלב אם טבעי - תמונה 1" src="https://i.imgur.com/m2nDchP.jpeg"/></div>
-                        <div class="slide"><img alt="סבון מחלב אם טבעי - תמונה 2" src="https://i.imgur.com/t8Y1Jrc.jpeg"/></div>
-                        <div class="slide"><img alt="סבון מחלב אם טבעי - תמונה 3" src="https://i.imgur.com/xGCiRsO.jpeg"/></div>
-                    </div>
-                </div>
+            
             </div>
-        </div>
     </div>
 
     <div class="modal" id="shippingModal">
@@ -746,12 +757,6 @@
         function closeModal(modalElement) {
             modalElement.classList.remove('show');
         }
-
-        // --- Logo Scroll Hide Logic (REMOVED) ---
-        // window.addEventListener('scroll', handleScroll);
-        // handleScroll();
-        // --- End Logo Scroll Hide Logic ---
-
 
         // --- Sidebar Logic ---
         function toggleSidebar() {
