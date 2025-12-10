@@ -23,7 +23,7 @@
             background: var(--bg);
             color:var(--text);
             overflow-x: hidden; 
-            font-size: 18px; /* NEW: Base font size increase */
+            font-size: 18px; /* Base font size increase */
         }
         /* FIXED: Adjusted padding-top now that logo is static */
         .app{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;padding-top: 24px;box-sizing:border-box; flex-direction: column;}
@@ -113,7 +113,7 @@
         /* Lists and Special Text */
         .natural-text { color: var(--new-accent); font-weight: 700; padding: 10px 0; border-right: 3px solid var(--new-accent); padding-right: 10px; font-size: 18px; } /* UPDATED COLOR AND FONT SIZE */
         .feature-list { list-style: none; padding: 0; margin: 10px 0; }
-        .feature-list li { margin-bottom: 10px; font-size: 18px; display: flex; align-items: center; } /* INCREASED */
+        .feature-list li { margin-bottom: 10px; font-size: 18px; display: flex; align-items: center; } /* Base size */
         .feature-list li strong { font-weight: 700; color: #333; } /* This CSS ensures only the bolded part is stronger */
         .feature-icon { color: var(--new-accent); font-size: 24px; margin-left: 8px; line-height: 1; } /* UPDATED COLOR AND SIZE */
         
@@ -290,6 +290,9 @@
             display: inline;
             direction: ltr;
         }
+        #paymentModal .modal-buttons { /* Specific rule for payment buttons margin to reduce gap */
+            margin-top: 5px; 
+        }
         #openBitApp {
             background-color: #4CAF50; 
             transition: all 0.3s;
@@ -454,6 +457,11 @@
             /* Padding for app on small screens so the logo doesn't cover the main content */
             .app {
                 padding-top: 24px; /* No need for large padding-top anymore */
+            }
+            
+            /* NEW: Reduced font for feature list items on mobile */
+            .feature-list li { 
+                font-size: 16px; 
             }
             
             /* Modal adjustments for smaller devices */
@@ -630,7 +638,7 @@
 
                 <h2 id="order-form">🎁 הזמנה ותשלום</h2>
                 
-                <div class="cta" style="margin-top: 30px;">
+                <div class="cta" style="margin-top: 10px;">
                     <button class="btn" id="openOrderModalBtn" style="width: 100%;">להזמנה ולמעבר לתשלום 🛒</button>
                 </div>
                 
@@ -1089,27 +1097,7 @@
             });
         });
 
-        // --- Disable Pull-to-Refresh on iOS/Android browsers ---
-        (function() {
-            let lastY = 0;
-            const body = document.body;
-
-            body.addEventListener('touchstart', function(e) {
-                if (e.touches.length === 1) {
-                    lastY = e.touches[0].clientY;
-                }
-            }, { passive: true });
-
-            body.addEventListener('touchmove', function(e) {
-                const currentY = e.touches[0].clientY;
-                // Only prevent default if the user is at the very top of the page AND scrolling up (pulling down)
-                if (window.scrollY === 0 && currentY > lastY) {
-                    e.preventDefault();
-                }
-                lastY = currentY;
-            }, { passive: false }); 
-        })();
-        // --- End Disable Pull-to-Refresh ---
+        // NOTE: The code to disable Pull-to-Refresh was removed to re-enable smooth scrolling.
 
     </script>
 </body>
