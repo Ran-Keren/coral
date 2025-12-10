@@ -119,6 +119,8 @@
             display: flex;
             gap: 8px;
             align-items: center;
+            width: 100%;
+            justify-content: center;
         }
         .coupon-section input {
             padding: 8px;
@@ -215,6 +217,7 @@
         }
 
         .modal h2{margin:0 0 10px;color:var(--accent); text-align: center; font-size: 22px; border-bottom: none; padding-bottom: 0;}
+        .modal h3{color:#333; margin-top: 0; font-size: 18px; text-align: center; padding: 5px 0;}
         .modal p{margin:5px 0;line-height:1.4}
         .modal-buttons{display:flex;gap:10px;margin-top:15px;justify-content:center; flex-wrap: wrap;}
         
@@ -287,7 +290,6 @@
              display: flex;
              justify-content: space-around;
              align-items: center;
-             margin-bottom: 15px;
              gap: 15px;
         }
         .total-copies-group .form-group {
@@ -298,7 +300,10 @@
              flex-shrink: 0;
              text-align: center;
         }
-
+        /* Mobile adjustment for copies select width */
+        #productSelectionModal #copies {
+            width: 100%;
+        }
 
         /* --- Sidebar Styles (UPDATED TO FLOATING/FIXED TOGGLE) --- */
         #sidebar-toggle {
@@ -617,37 +622,33 @@
             </div>
     </div>
 
-    <div class="modal" id="shippingModal">
+    <div class="modal" id="productSelectionModal">
         <div class="modal-content">
-            <h2>פרטי הזמנה 📝</h2>
-            
-            <h3>בחירת מוצר ועיצוב 🧼</h3>
+            <h2>שלב 1: בחירת מוצר ועיצוב 🧼</h2>
             
             <div class="form-group">
                 <label for="copies">כמות סבונים:</label>
-                <div class="total-copies-group">
-                    <select id="copies">
-                        <option value="1">1 יח' (₪45)</option>
-                        <option value="2">2 יח' (₪90)</option>
-                        <option value="4">4 יח' (₪180)</option>
-                        <option value="6">6 יח' (₪270)</option>
-                        <option value="10">10 יח' (₪450)</option>
-                    </select>
-                </div>
+                <select id="copies">
+                    <option value="1">1 יח' (₪45)</option>
+                    <option value="2">2 יח' (₪90)</option>
+                    <option value="4">4 יח' (₪180)</option>
+                    <option value="6">6 יח' (₪270)</option>
+                    <option value="10">10 יח' (₪450)</option>
+                </select>
             </div>
 
             <div class="form-group">
                 <label for="recipe">שם המתכון / מגע:</label>
                 <select id="recipe" required>
                     <option value="" disabled selected>בחר מתכון (מגע מזין, מתוק, טהור...)</option>
-                    <option value="מגע מזין">מגע מזין (עור יבש)</option>
-                    <option value="מגע מתוק">מגע מתוק (ריח קקאו עדין)</option>
-                    <option value="מגע טהור">מגע טהור (ניקוי פנים)</option>
-                    <option value="מגע פורח">מגע פורח (עור אדמומי)</option>
-                    <option value="מגע אוהב">מגע אוהב (שיער וקרקפת)</option>
-                    <option value="מגע חמים">מגע חמים (עור יבש במיוחד)</option>
-                    <option value="מגע מגונן">מגע מגונן (עור רגיש / אדמומיות)</option>
-                    <option value="אחר">אחר (יש לציין בהתאמה אישית)</option>
+                    <option value="מגע מזין">מגע מזין</option>
+                    <option value="מגע מתוק">מגע מתוק</option>
+                    <option value="מגע טהור">מגע טהור</option>
+                    <option value="מגע פורח">מגע פורח</option>
+                    <option value="מגע אוהב">מגע אוהב</option>
+                    <option value="מגע חמים">מגע חמים</option>
+                    <option value="מגע מגונן">מגע מגונן</option>
+                    <option value="אחר">אחר</option>
                 </select>
             </div>
 
@@ -655,9 +656,9 @@
                 <label for="shape">צורה:</label>
                 <select id="shape" required>
                     <option value="" disabled selected>בחר צורה</option>
-                    <option value="מלבנית">מלבנית (רגיל)</option>
+                    <option value="מלבנית">מלבנית</option>
                     <option value="שושנה">שושנה</option>
-                    <option value="לב (2 יח' במארז)">לב (2 יח' במארז - חובה לבחור כמות זוגית)</option>
+                    <option value="לב (2 יח' במארז)">לב (2 יח' במארז)</option>
                 </select>
             </div>
 
@@ -688,9 +689,18 @@
                 </div>
                 <div class="coupon-msg" id="couponMsg"></div>
             </div>
-            
-            <hr style="border: 0; border-top: 1px dashed #eee; margin: 15px 0;">
 
+            <div class="modal-buttons">
+                <button class="btn" id="continueToShippingBtn" style="flex-grow: 1;">המשך לפרטי משלוח</button>
+                <button class="btn close-modal" data-modal="productSelectionModal" style="background: #999; flex-grow: 1;">ביטול</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal" id="shippingDetailsModal">
+        <div class="modal-content">
+            <h2>שלב 2: פרטי משלוח והתאמה 🚚</h2>
+            
             <h3>פרטי משלוח</h3>
             <div class="form-group"><label for="shippingName">שם מלא</label><input type="text" id="shippingName" required placeholder="שם ושם משפחה"></div>
             <div class="form-group"><label for="shippingPhone">טלפון</label><input type="tel" id="shippingPhone" required placeholder="05X-XXXXXXX"></div>
@@ -698,13 +708,15 @@
             <div class="form-group"><label for="shippingCity">עיר</label><input type="text" id="shippingCity" required placeholder="לדוגמה: תל אביב"></div>
             <div class="form-group"><label for="shippingAddress">כתובת</label><input type="text" id="shippingAddress" required placeholder="רחוב, מספר בית, דירה"></div>
             
+            <hr style="border: 0; border-top: 1px dashed #eee; margin: 10px 0;">
+
             <h3>פרטי התאמה אישית</h3>
             <div class="form-group"><label for="babyAge">גיל התינוק (חודשים)</label><input type="number" id="babyAge" required placeholder="לדוגמה: 3" min="0" max="48"></div>
-            <div class="form-group"><label for="allergies">אלרגיות / חלב של תורמת (אופציונלי)</label><textarea id="allergies" placeholder="ציין אלרגיות ידועות או אם מדובר בחלב של תורמת"></textarea></div>
+            <div class="form-group"><label for="allergies">אלרגיות / הערות נוספות (אופציונלי)</label><textarea id="allergies" placeholder="ציין אלרגיות ידועות או בקשות נוספות"></textarea></div>
 
             <div class="modal-buttons">
+                <button class="btn" id="backToProductsBtn" style="background: #999; flex-grow: 1;">חזרה לבחירת מוצר</button>
                 <button class="btn" id="continueToPaymentBtn" style="flex-grow: 1;">המשך לתשלום</button>
-                <button class="btn close-modal" data-modal="shippingModal" style="background: #999; flex-grow: 1;">ביטול</button>
             </div>
         </div>
     </div>
@@ -721,7 +733,7 @@
             </p>
             <div class="modal-buttons" style="flex-direction: column; width: 100%;">
                 <button class="btn" id="openBitApp" style="width: 100%;">מעבר לתשלום (Bit)</button>
-                <button class="btn close-modal" data-modal="paymentModal" style="background: #999; width: 100%; margin-top: 5px;">חזרה לפרטי משלוח</button>
+                <button class="btn close-modal" data-modal="paymentModal" style="background: #999; width: 100%; margin-top: 5px;">ביטול וחזרה</button>
             </div>
         </div>
     </div>
@@ -733,7 +745,7 @@
         // **IMPORTANT:** Replace 'service_cprtttd' and 'template_m39ushb' with your actual service/template IDs
         emailjs.init('ecHybfD_vT68aQGnO'); 
 
-        const PRICE_PER_BOOK = 45; // Changed from BOOK to SOAP but kept the variable name for minimal changes
+        const PRICE_PER_SOAP = 45; 
         
         const COUPONS = {
             'TALYA20': 0.20, // 20% discount
@@ -750,8 +762,16 @@
         
         const openOrderModalBtn = document.getElementById('openOrderModalBtn'); 
 
-        const shippingModal = document.getElementById('shippingModal');
+        // Step 1 Modals
+        const productSelectionModal = document.getElementById('productSelectionModal');
+        const continueToShippingBtn = document.getElementById('continueToShippingBtn');
+        
+        // Step 2 Modals
+        const shippingDetailsModal = document.getElementById('shippingDetailsModal');
+        const backToProductsBtn = document.getElementById('backToProductsBtn');
         const continueToPaymentBtn = document.getElementById('continueToPaymentBtn');
+        
+        // Step 3 Modals
         const paymentModal = document.getElementById('paymentModal');
         const paymentTotalAmount = document.getElementById('paymentTotalAmount');
         const openBitApp = document.getElementById('openBitApp'); 
@@ -765,8 +785,18 @@
         const shapeInput = document.getElementById('shape');
         const essentialOilInput = document.getElementById('essentialOil');
         const blessingInput = document.getElementById('blessing');
+        
+        // SHIPPING FIELDS
+        const shippingName = document.getElementById('shippingName');
+        const shippingPhone = document.getElementById('shippingPhone');
+        const shippingEmail = document.getElementById('shippingEmail');
+        const shippingCity = document.getElementById('shippingCity');
+        const shippingAddress = document.getElementById('shippingAddress');
+        const babyAge = document.getElementById('babyAge');
+        const allergies = document.getElementById('allergies');
 
-        // Sidebar Elements
+
+        // Sidebar Elements (unchanged)
         const sidebar = document.getElementById('sidebar');
         const sidebarToggle = document.getElementById('sidebar-toggle');
         const closeSidebarBtn = document.getElementById('close-sidebar-btn');
@@ -776,7 +806,7 @@
 
         function updateTotal() {
             const quantity = parseInt(copiesInput.value) || 1;
-            let total = PRICE_PER_BOOK * quantity;
+            let total = PRICE_PER_SOAP * quantity;
             let finalTotal = total;
             
             if (isDiscountApplied) {
@@ -889,7 +919,7 @@
 
         openOrderModalBtn.addEventListener('click', ()=>{ 
             updateTotal();
-            shippingModal.classList.add('show'); 
+            productSelectionModal.classList.add('show'); 
         });
 
         copiesInput.addEventListener('change', updateTotal);
@@ -942,20 +972,11 @@
         })();
         // --- END CAROUSEL LOGIC ---
 
-        continueToPaymentBtn.addEventListener('click', (e)=>{
-            const name = document.getElementById('shippingName').value.trim();
-            const phone = document.getElementById('shippingPhone').value.trim();
-            const email = document.getElementById('shippingEmail').value.trim();
-            const city = document.getElementById('shippingCity').value.trim();
-            const address = document.getElementById('shippingAddress').value.trim();
-            const babyAge = document.getElementById('babyAge').value.trim();
-            const allergies = document.getElementById('allergies').value.trim();
-            
-            // NEW FIELDS VALIDATION
+        // --- Step 1 to Step 2 Transition ---
+        continueToShippingBtn.addEventListener('click', ()=>{
             const recipe = recipeInput.value;
             const shape = shapeInput.value;
-
-            // Simple validation for new fields
+            
             if (!recipe) {
                 alert('אנא בחרו מתכון/מגע.');
                 return;
@@ -969,20 +990,49 @@
                  return;
             }
             
-            const essentialOil = essentialOilInput.value;
-            const blessing = blessingInput.value.trim();
+            // Collect Product Data
+            currentOrderData.copies = copiesInput.value;
+            currentOrderData.totalPrice = paymentTotalAmount.textContent;
+            currentOrderData.recipe = recipe;
+            currentOrderData.shape = shape;
+            currentOrderData.essentialOil = essentialOilInput.value;
+            currentOrderData.blessing = blessingInput.value.trim();
+
+            closeModal(productSelectionModal);
+            shippingDetailsModal.classList.add('show');
+        });
+
+        // --- Step 2 Back to Step 1 ---
+        backToProductsBtn.addEventListener('click', ()=>{
+            closeModal(shippingDetailsModal);
+            productSelectionModal.classList.add('show');
+        });
+        
+        // --- Step 2 to Step 3 Transition ---
+        continueToPaymentBtn.addEventListener('click', (e)=>{
+            const name = shippingName.value.trim();
+            const phone = shippingPhone.value.trim();
+            const email = shippingEmail.value.trim();
+            const city = shippingCity.value.trim();
+            const address = shippingAddress.value.trim();
+            const age = babyAge.value.trim();
+            const notes = allergies.value.trim();
             
-            const copies = copiesInput.value;
-            const totalPrice = paymentTotalAmount.textContent;
-            
-            if (!name || !phone || !email || !city || !address || !babyAge) {
+            if (!name || !phone || !email || !city || !address || !age) {
                 alert('אנא מלאו את כל פרטי המשלוח וההתאמה האישית (כולל גיל התינוק).');
                 return;
             }
             
-            currentOrderData = { name, phone, email, city, address, copies, totalPrice, babyAge, allergies, recipe, shape, essentialOil, blessing }; 
+            // Collect Shipping Data
+            currentOrderData.name = name;
+            currentOrderData.phone = phone;
+            currentOrderData.email = email;
+            currentOrderData.city = city;
+            currentOrderData.address = address;
+            currentOrderData.babyAge = age;
+            currentOrderData.allergies = notes;
 
-            closeModal(shippingModal);
+            closeModal(shippingDetailsModal);
             paymentModal.classList.add('show');
         });
 
@@ -1002,7 +1052,7 @@
                 if (modalId === 'paymentModal') {
                     // Back to shipping form from payment
                     closeModal(document.getElementById(modalId));
-                    shippingModal.classList.add('show');
+                    shippingDetailsModal.classList.add('show'); // Go back to step 2
                 } else if (modalId) {
                     closeModal(document.getElementById(modalId));
                 }
@@ -1017,11 +1067,6 @@
             });
         });
 
-        // Add event listeners for new select elements to ensure they update the form state (though not price)
-        recipeInput.addEventListener('change', ()=>{});
-        shapeInput.addEventListener('change', ()=>{});
-        essentialOilInput.addEventListener('change', ()=>{});
-        blessingInput.addEventListener('input', ()=>{});
     </script>
 </body>
 </html>
