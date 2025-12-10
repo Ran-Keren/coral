@@ -648,7 +648,6 @@
                     <option value="מגע אוהב">מגע אוהב</option>
                     <option value="מגע חמים">מגע חמים</option>
                     <option value="מגע מגונן">מגע מגונן</option>
-                    <option value="אחר">אחר</option>
                 </select>
             </div>
 
@@ -976,6 +975,7 @@
         continueToShippingBtn.addEventListener('click', ()=>{
             const recipe = recipeInput.value;
             const shape = shapeInput.value;
+            const copies = parseInt(copiesInput.value);
             
             if (!recipe) {
                 alert('אנא בחרו מתכון/מגע.');
@@ -985,7 +985,11 @@
                 alert('אנא בחרו צורה רצויה.');
                 return;
             }
-            if (shape.includes('לב') && (copiesInput.value % 2 !== 0)) {
+            
+            // --- UPDATED VALIDATION LOGIC ---
+            // Only check for odd numbers if the shape is exactly 'לב (2 יח' במארז)'
+            const heartShapeValue = 'לב (2 יח\' במארז)';
+            if (shape === heartShapeValue && (copies % 2 !== 0)) {
                  alert('שימו לב: צורת "לב" מגיעה 2 יח\' במארז. אנא בחרו כמות זוגית.');
                  return;
             }
