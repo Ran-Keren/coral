@@ -114,7 +114,7 @@
         .natural-text { color: var(--new-accent); font-weight: 700; padding: 10px 0; border-right: 3px solid var(--new-accent); padding-right: 10px; font-size: 18px; } /* UPDATED COLOR AND FONT SIZE */
         .feature-list { list-style: none; padding: 0; margin: 10px 0; }
         .feature-list li { margin-bottom: 10px; font-size: 18px; display: flex; align-items: center; } /* INCREASED */
-        .feature-list li strong { font-weight: 700; color: #333; }
+        .feature-list li strong { font-weight: 700; color: #333; } /* This CSS ensures only the bolded part is stronger */
         .feature-icon { color: var(--new-accent); font-size: 24px; margin-left: 8px; line-height: 1; } /* UPDATED COLOR AND SIZE */
         
         /* CTA & Coupon Styles */
@@ -458,13 +458,13 @@
             
             /* Modal adjustments for smaller devices */
             .modal-content {
-                padding: 12px; /* Adjusted mobile padding */
+                padding: 10px; /* Adjusted mobile padding (reduced from 12px) */
                 width: 95%; /* Ensures it doesn't touch edges */
             }
-            .form-group { margin-bottom: 8px; } /* Further reduced form group margin */
+            .form-group { margin-bottom: 5px; } /* Further reduced form group margin (from 8px) */
             .modal h2 { font-size: 24px; margin-bottom: 5px; } /* Adjusted mobile H2 */
-            .modal h3 { margin-top: 5px; font-size: 18px; padding: 3px 0; } /* Adjusted mobile H3 */
-            hr { margin: 10px 0 !important; } /* Further reduced HR margin */
+            .modal h3 { margin-top: 3px; font-size: 18px; padding: 3px 0; margin-bottom: 3px; } /* Adjusted mobile H3 for tighter fit */
+            hr { margin: 8px 0 !important; } /* Further reduced HR margin (from 10px) */
         }
         
         /* Mobile Specific (further refinements) */
@@ -549,10 +549,10 @@
 
                 <h2 id="benefits">🌿 יתרונות הסבון הטבעי</h2>
                 <ul class="feature-list">
-                    <li><span class="feature-icon">✔️</span> מגיל לידה: מתאים לעור הרגיש ביותר.</li>
-                    <li><span class="feature-icon">✨</span> הקלה מיידית: מתאים לעור רגיש ולתינוקות שסובלים מ"קליפה" (קשקשת) בראש.</li>
-                    <li><span class="feature-icon">🌱</span> רכיבים טבעיים בלבד: ללא SLS, פראבנים, חומרי ריח סינטטיים או כימיקלים קשים.</li>
-                    <li><span class="feature-icon">👐</span> ייצור בשיטה קרה: מיוצר בעבודת יד, תוך שמירה מקסימלית על הרכיבים הפעילים והמינרלים שבחלב האם.</li>
+                    <li><span class="feature-icon">✔️</span> <strong>מגיל לידה:</strong> מתאים לעור הרגיש ביותר.</li>
+                    <li><span class="feature-icon">✨</span> <strong>הקלה מיידית:</strong> מתאים לעור רגיש ולתינוקות שסובלים מ"קליפה" (קשקשת) בראש.</li>
+                    <li><span class="feature-icon">🌱</span> <strong>רכיבים טבעיים בלבד:</strong> ללא SLS, פראבנים, חומרי ריח סינטטיים או כימיקלים קשים.</li>
+                    <li><span class="feature-icon">👐</span> <strong>ייצור בשיטה קרה:</strong> מיוצר בעבודת יד, תוך שמירה מקסימלית על הרכיבים הפעילים והמינרלים שבחלב האם.</li>
                 </ul>
 
                 <h2 id="about-coral">💖 קצת עליי ועל סגולות חלב האם</h2>
@@ -617,11 +617,11 @@
 
                 <h3 style="margin-top: 30px; border-bottom: 2px solid #eee; padding-bottom: 5px; color: var(--new-accent); text-align: center;">⚠️ הנחיות כלליות</h3>
                 
-                <p style="font-size: 14px; color: #555; margin-bottom: 5px;">
+                <p style="font-size: 16px; color: #555; margin-bottom: 5px;">
                     איך זה עובד? ניתן להביא את חלב האם האישי שלך למספר נקודות איסוף, או להשתמש בחלב אם של תורמת. כמות החלב הדרושה היא 40 מ"ל ליחידה. 
                 </p>
                 
-                <ul style="list-style-type: '• '; padding-right: 20px; font-size: 14px; color: #555; margin-top: 10px;">
+                <ul style="list-style-type: '• '; padding-right: 20px; font-size: 16px; color: #555; margin-top: 10px;">
                     <li>הסבון אינו תרופה ואינו ראוי למאכל.</li>
                     <li>אין לבלוע, יש להפסיק את השימוש במקרה של גירוי.</li>
                     <li>היות שמדובר באל-סבון עבודת יד, הרי שהגודל, הצבע, המרקם והמשקל עשויים להשתנות.</li>
@@ -1083,8 +1083,6 @@
         document.querySelectorAll('.modal').forEach(modal => {
             modal.addEventListener('click', (e) => {
                 if (e.target.classList.contains('modal')) {
-                    // Prevent closing if the click is on the modal background, but you are inside a form/input
-                    // This is handled better by modal-content scroll, but added for robustness.
                     // If modal content is small, it still closes, which is the standard behavior.
                     closeModal(modal);
                 }
