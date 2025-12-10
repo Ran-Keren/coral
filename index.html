@@ -3,12 +3,12 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
-    <title>מוצרי חלב אם: סבון טבעי + תפריט</title>
+    <title>🧼 סבון טבעי מחלב אם: הזנה מהאם לתינוק</title>
     <style>
         :root{
             --gap:18px;
-            --accent:#00695C; 
-            --bg:#e0f7fa; 
+            --accent:#00695C; /* Dark Teal - for a natural/calm feel */
+            --bg:#e0f7fa; /* Light Cyan Background */
             --text:#222;
             --success: #28a745;
             --error: #dc3545;
@@ -23,21 +23,84 @@
             color:var(--text);
             overflow-x: hidden; 
         }
-        .app{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;box-sizing:border-box; flex-direction: column;}
+        /* FIXED: Adjusted padding-top now that logo is static */
+        .app{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;padding-top: 24px;box-sizing:border-box; flex-direction: column;}
         
-        .card{width:100%;max-width:1100px;background:linear-gradient(180deg,var(--soft-white),#fbfbfb);border-radius:16px;box-shadow:0 12px 40px rgba(0,0,0,0.15);overflow:hidden;display:flex;gap:var(--gap);flex-direction:row-reverse; position: relative;}
+        .card{width:100%;max-width:1100px;background:linear-gradient(180deg,var(--soft-white),#fbfbfb);border-radius:16px;box-shadow:0 12px 40px rgba(0,0,0,0.15);overflow:hidden;display:flex;gap:var(--gap);flex-direction:row-reverse;}
+        
+        /* ADJUSTED: Content padding reset for desktop */
         .content{flex:1;min-width:260px;padding:28px;display:flex;flex-direction:column;gap:14px}
-        h1{margin:0;font-size:26px; color: var(--accent); text-align: right;}
+        
+        /* Typography */
+        h1{
+            /* Removed flex properties */
+            margin:0;
+            font-size:26px; 
+            color: var(--accent); 
+            text-align: right; 
+        }
+        
+        /* FIXED: Logo Style - Static positioning, centered block */
+        .logo-header-wrapper {
+            position: static; 
+            margin: 0 auto 20px auto; /* Centering block and adding bottom margin */
+            padding: 0; 
+            z-index: 1; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px; 
+            background: none; 
+            box-shadow: none; 
+            /* Removed transition properties */
+        }
+
+        /* REMOVED: Class to hide the logo when scrolled down is no longer needed */
+        /* .logo-header-wrapper.hidden-on-scroll { opacity: 0; visibility: hidden; } */
+
+        .logo-container { 
+            /* Logo replacement styling - BIGGER */
+            width: 200px; 
+            height: 200px; 
+            background-image: url('https://i.imgur.com/Df50Xpm.png'); 
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            /* Hide the 'K' text */
+            text-indent: -9999px;
+            display: inline-block;
+            margin-left: 0;
+        }
+        
+        /* REMOVED: Logo text styling is no longer needed */
+        .logo-header-wrapper h1 { display: none; } 
+
         h2{font-size: 22px; color: var(--accent); border-bottom: 2px solid #eee; padding-bottom: 8px; margin-top: 25px; font-weight: 700;}
+        /* Adjusted h3 style for product list for better readability */
+        h3{font-size: 20px; color: #444; margin: 15px 0 5px;}
+        .product-list h3 {
+             color: var(--accent); /* Highlight product names */
+             font-weight: 800; 
+             margin-bottom: 5px;
+             padding-bottom: 0;
+             border-bottom: none;
+        }
+
         p{margin:0;line-height:1.7}
         .lead{font-weight:600}
+        
+        /* Lists and Special Text */
+        .natural-text { color: var(--accent); font-weight: 600; padding: 10px 0; border-right: 3px solid var(--accent); padding-right: 10px; }
+        .feature-list { list-style: none; padding: 0; margin: 10px 0; }
+        .feature-list li { margin-bottom: 8px; font-size: 16px; display: flex; align-items: center; }
+        .feature-list li strong { font-weight: 700; color: #333; }
+        .feature-icon { color: var(--accent); font-size: 20px; margin-left: 8px; line-height: 1; }
         
         /* CTA & Coupon Styles */
         .cta{margin-top:auto;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
         .btn{background:var(--accent);color:#fff;border:none;padding:12px 18px;border-radius:10px;font-weight:700;cursor:pointer;transition:all 0.3s; text-align: center; box-shadow: 0 4px 10px rgba(0,105,92,0.2);}
         .btn:hover{background:#004d40;transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,105,92,0.4)}
         .price{font-size:22px;font-weight:800;color:var(--accent)}
-        .natural-text { color: var(--accent); font-weight: 600; padding: 10px 0; border-right: 3px solid var(--accent); padding-right: 10px; }
         
         /* Coupon Styles */
         .coupon-section {
@@ -95,25 +158,34 @@
             display:flex;
             align-items:center;
             justify-content:center;
+            /* Added fixed height for image uniformity */
+            height: 400px; 
         }
         .slides-container {
             width: 100%;
+            /* Added height 100% to fill the carousel-wrap height */
+            height: 100%; 
             overflow: hidden;
         }
         .slides {
             display: flex;
             transition: transform 0.5s ease-in-out;
-            width: 300%; /* Important: Must accommodate all slides (3 slides * 100%) */
+            width: 300%; /* Total width for 3 slides */
+            height: 100%; /* Added height 100% */
+            direction: ltr; 
         }
         .slide {
             flex-shrink: 0;
             width: calc(100% / 3); /* Each slide takes up 1/3 of the 300% width */
             height: 100%;
+            direction: rtl; 
         }
         .slide img{
             width:100%;
+            /* Ensure height fills the container */
             height:100%;
-            object-fit:cover;
+            /* CRUCIAL: Makes images same size by covering the area without distortion */
+            object-fit: cover; 
             display:block
         }
         /* --- End Carousel Specific CSS --- */
@@ -143,11 +215,12 @@
         .modal-buttons{display:flex;gap:10px;margin-top:15px;justify-content:center; flex-wrap: wrap;}
         
         /* Compact Form Elements */
-        select{width:80px;padding:5px;border-radius:6px;border:1px solid #ccc;font-size:16px;text-align:center;cursor:pointer; background-color: #f9f9f9;}
+        select{width:100px;padding:5px;border-radius:6px;border:1px solid #ccc;font-size:16px;text-align:center;cursor:pointer; background-color: #f9f9f9;}
         
         .form-group{margin-bottom: 10px; text-align: right;} 
         .form-group label{display: block; margin-bottom: 2px; font-weight: 600; color: #333; font-size: 14px;}
-        .form-group input{width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-size: 16px; background-color: #f9f9f9; height: 38px;}
+        .form-group input, .form-group textarea{width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-size: 16px; background-color: #f9f9f9; min-height: 38px;}
+        .form-group textarea { resize: vertical; min-height: 60px; }
         
         .price-container {
             text-align: center;
@@ -208,9 +281,16 @@
 
         /* --- Sidebar Styles --- */
         #sidebar-toggle {
+            /* NEW Static Styles: */
+            position: relative; /* Now it flows normally */
+            margin: 10px 0 10px auto; /* Moves it to the left side (RTL) */
+            display: block;
+            
+            /* REMOVED Floating Styles:
             position: fixed; 
             top: 20px;
-            right: 20px; 
+            right: 20px; */
+            
             left: auto; 
             background: var(--accent);
             color: #fff;
@@ -299,15 +379,44 @@
         /* Responsive */
         @media (max-width:900px){
             .card{flex-direction:column-reverse}
-            .carousel-wrap{width:100%;max-width:none;min-width:0;height:320px}
-            .content{padding:18px}
+            /* Increased height for mobile */
+            .carousel-wrap{width:100%;max-width:none;min-width:0;height:350px}
+            /* ADJUSTED: Content padding reset for mobile */
+            .content{padding:18px;}
+            
+            .logo-header-wrapper {
+                 /* Removed top: 5px; */
+                 margin-bottom: 15px;
+            }
+            .logo-container { 
+                width: 120px; /* ADJUSTED: Smaller for tablet/mobile */
+                height: 120px;
+            }
+            
+            /* ADJUSTED: Sidebar toggle position is now static */
+            #sidebar-toggle {
+                /* Removed right: 15px; top: 15px; */
+                margin: 10px 0 10px auto; /* Moves it to the left side (RTL) */
+                display: block; 
+                z-index: 1000;
+            }
+            
+            /* Padding for app on small screens so the logo doesn't cover the main content */
+            .app {
+                padding-top: 24px; /* No need for large padding-top anymore */
+            }
         }
         
         /* Mobile Specific */
         @media (max-width: 550px) {
+            
+            .logo-container { 
+                width: 100px; /* ADJUSTED: Smaller for very small screens */
+                height: 100px;
+            }
+            
             #sidebar-toggle {
-                right: 15px;
-                top: 15px;
+                /* Removed right: 15px; top: 15px; */
                 padding: 8px 12px;
                 font-size: 14px;
             }
@@ -326,6 +435,10 @@
             .form-group { margin-bottom: 8px; }
             .modal h2 { font-size: 20px; margin-bottom: 5px; }
             hr { margin: 10px 0 !important; }
+            
+            .app {
+                padding-top: 24px; /* No need for large padding-top anymore */
+            }
         }
 
     </style>
@@ -338,43 +451,121 @@
         <ul>
             <li><a href="#product-description">אודות המוצר</a></li>
             <li><a href="#benefits">יתרונות הסבון</a></li>
-            <li><a href="#ingredients">רכיבים טבעיים</a></li>
+            <li><a href="#about-coral">הסיפור שלנו</a></li>
+            <li><a href="#product-variations">🌱 המוצרים שלנו</a></li>
             <li><a href="#order-form">הזמנה ותשלום</a></li>
         </ul>
         <p style="margin-top: 30px; font-size: 14px; color: #666;">
             לכל שאלה נוספת, ניתן ליצור קשר.
+            <br>
+            **קורל: 050-8463242**
         </p>
     </div>
 
     <div class="app">
+        
+        <div class="logo-header-wrapper">
+            <span class="logo-container">K</span> 
+        </div>
+        
         <button id="sidebar-toggle">תפריט ☰</button>
         
         <div class="card" role="application">
+            
             <div class="content">
 
-                <h1>🧼 סבון טבעי מחלב אם: מתנת הטבע לעור הרך</h1>
+                <h1>סבון טבעי מחלב אם</h1>
+                <p class="lead" style="color: #444; font-size: 18px; text-align: center;">
+                    **טבעי. אישי. מושלם**
+                </p>
 
                 <p class="lead" id="product-description">
-                    הכירו את הסבון הטבעי המיוחד שלנו, המשלב את כל הטוב שבחלב אם עם שמנים ורכיבים בוטניים אורגניים. פתרון מושלם לעור רגיש, יבש או מגורה.
+                    העניקי לתינוקך מתנה מפנקת ומזינה – אל-סבון ייחודי וטבעי העשוי **מחלב האם שלך**. הזנה ישירה דרך העור.
                 </p>
 
-                <p class="natural-text">
-                    **מיוצר באהבה ובשיטה מסורתית קרה** – לשמירה מקסימלית על הרכיבים הפעילים והמינרלים בחלב האם.
-                </p>
-
-                <hr>
+                <div class="natural-text">
+                    הסבון משלב את חלב האם עם **שמנים טבעיים נוספים**, ונועד להקל על תסמיני יובש, גירוי, אדמומיות ותסמיני אסתמה של העור. 
+                </div>
 
                 <h2 id="benefits">🌿 יתרונות הסבון הטבעי</h2>
-                <ul>
-                    <li>**הזנה ורכות:** חלב אם עשיר בנוגדנים, ויטמינים ושומנים חיוניים המזינים את עור התינוק והאם.</li>
-                    <li>**הקלה והרגעת עור:** מומלץ במיוחד לעור הסובל מאקזמה, פריחה או גירויים (כולל "כובע" בראש התינוק).</li>
-                    <li>**100% טבעי:** ללא SLS, פראבנים, חומרי ריח סינטטיים או כימיקלים קשים.</li>
+                <ul class="feature-list">
+                    <li><span class="feature-icon">✔️</span> **מגיל לידה:** מתאים לעור הרגיש ביותר.</li>
+                    <li><span class="feature-icon">✨</span> **הקלה מיידית:** מתאים לעור רגיש ולתינוקות שסובלים מ"קליפה" (קשקשת) בראש.</li>
+                    <li><span class="feature-icon">🌱</span> **רכיבים טבעיים בלבד:** ללא SLS, פראבנים, חומרי ריח סינטטיים או כימיקלים קשים.</li>
+                    <li><span class="feature-icon">👐</span> **ייצור בשיטה קרה:** מיוצר בעבודת יד, תוך שמירה מקסימלית על הרכיבים הפעילים והמינרלים שבחלב האם.</li>
                 </ul>
 
-                <h2 id="ingredients">🌱 רכיבים וייצור</h2>
+                <h2 id="about-coral">💖 קצת עליי ועל סגולות חלב האם</h2>
                 <p>
-                    הסבון שלנו מכיל תערובת מנצחת של חלב אם, **שמן זית כתית מעולה**, **חמאת שיאה** ושמנים אתריים עדינים. כל סבון מיוצר בתהליך ייצור קפדני (Cold Process) השומר על תכונות הריכוך והלחות של הרכיבים.
+                    נעים להכיר, שמי קורל, עורכת-דין ואימא לשני בנים מקסימים. הרעיון לייצר אל-סבון מחלב אם נולד מתוך **ניסיוני האישי** עם בני הבכור שסבל מתסמינים קשים של אסתמה של העור.
                 </p>
+                <p>
+                    לאחר שניסיתי אינספור תכשירים יקרים ללא הצלחה, נחשפתי לסגולות האדירות של חלב אם כתרכובת מזינה, מלאת לחות ונוגדנים. מאז שהתחלתי לרקוח סבוני חלב אם, עורו של בני השתפר פלאים. הרגשתי שאני **חייבת לחלוק את הפלא הזה גם עם אימהות אחרות**.
+                </p>
+                
+                <h2 id="product-variations">🌱 המוצרים שלנו:</h2>
+                
+                <p style="font-size: 16px; font-weight: 600; color: var(--accent); margin-bottom: 15px; border-right: 3px solid var(--accent); padding-right: 10px;">
+                    ניתן לבקש מתכון מותאם אישית, לפי הנתונים האישיים של עור התינוק שלך.
+                </p>
+
+                <div class="product-list" style="display: flex; flex-direction: column; gap: 20px;">
+                    
+                    <div class="product-item">
+                        <h3>1. מגע מזין</h3>
+                        <p style="font-weight: 600;">תכשיר לחות שמעניק לחות עמוקה לעור יבש, כמו חיבוק מחמם של אימא.</p>
+                        <p style="font-size: 14px; color: #555;">אל-סבון גוף עדין ומעורר לחות לעור יבש. מכיל חמאת שיאה ושמן שקדים.</p>
+                    </div>
+
+                    <div class="product-item">
+                        <h3>2. מגע מתוק</h3>
+                        <p style="font-weight: 600;">תכשיר לחות מפנק עם ריח טבעי עדין, כמו נשיקה אוהבת של אימא.</p>
+                        <p style="font-size: 14px; color: #555;">אל-סבון מפנק עם ריח טבעי עדין של קקאו. מכיל חמאת קקאו ושמן זית.</p>
+                    </div>
+
+                    <div class="product-item">
+                        <h3>3. מגע טהור</h3>
+                        <p style="font-weight: 600;">תכשיר לחות עדין לניקוי עור רגיש, כמו מגע נקי וטהור של אימא.</p>
+                        <p style="font-size: 14px; color: #555;">אל-סבון פנים עדין לניקוי עור רגיש. מכיל חימר לבן ושמן חוחובה.</p>
+                    </div>
+
+                    <div class="product-item">
+                        <h3>4. מגע פורח</h3>
+                        <p style="font-weight: 600;">תכשיר לחות מרגיע לעור אדמומי, כמו ליטוף אימהי עדין.</p>
+                        <p style="font-size: 14px; color: #555;">אל-סבון גוף מרגיע לעור אדמומי או מגורה. מכיל שמן קלנדולה אורגני ושיבולת שועל.</p>
+                    </div>
+
+                    <div class="product-item">
+                        <h3>5. מגע אוהב</h3>
+                        <p style="font-weight: 600;">תכשיר לחות עדין לניקוי עור ושיער, כמו אהבת אם שאינה נגמרת.</p>
+                        <p style="font-size: 14px; color: #555;">אל-סבון עדין לניקוי השיער והקרקפת. מכיל שמן קיק ושמן זרעי ענבים.</p>
+                    </div>
+
+                    <div class="product-item">
+                        <h3>6. מגע חמים</h3>
+                        <p style="font-weight: 600;">תכשיר לחות מזין לעור יבש, כמו תחושת חמימות של בית ואימא.</p>
+                        <p style="font-size: 14px; color: #555;">אל-סבון מזין לעור יבש במיוחד. מכיל שמן שומשום.</p>
+                    </div>
+                    
+                    <div class="product-item">
+                        <h3>7. מגע מגונן</h3>
+                        <p style="font-weight: 600;">תכשיר לחות לעור רגיש ועדין, כמו יד אימהית מגוננת.</p>
+                        <p style="font-size: 14px; color: #555;">אל-סבון טיפולי לעור רגיש, מתאים במיוחד לתינוקות עם נטייה לאדמומיות. מכיל שמן אובליפיחה אורגני.</p>
+                    </div>
+
+                </div>
+
+                <h3 style="margin-top: 30px; border-bottom: 2px solid #eee; padding-bottom: 5px; color: var(--accent);">⚠️ הנחיות כלליות</h3>
+                
+                <p style="font-size: 14px; color: #555; margin-bottom: 5px;">
+                    **איך זה עובד?** ניתן להביא את חלב האם האישי שלך למספר נקודות איסוף, או להשתמש בחלב אם של תורמת. כמות החלב הדרושה היא **40 מ"ל ליחידה**. 
+                </p>
+                
+                <ul style="list-style-type: '• '; padding-right: 20px; font-size: 14px; color: #555; margin-top: 10px;">
+                    <li>הסבון אינו תרופה ואינו ראוי למאכל.</li>
+                    <li>אין לבלוע, יש להפסיק את השימוש במקרה של גירוי.</li>
+                    <li>היות שמדובר באל-סבון עבודת יד, הרי שהגודל, הצבע, המרקם והמשקל עשויים להשתנות.</li>
+                </ul>
 
                 <h2 id="order-form">🎁 הזמנה ותשלום</h2>
                 
@@ -387,9 +578,9 @@
             <div class="carousel-wrap" aria-roledescription="carousel">
                 <div class="slides-container">
                     <div class="slides" id="slides">
-                        <div class="slide"><img alt="סבון מחלב אם טבעי - תמונה 1" src="https://i.imgur.com/CQZCkT5.jpeg"/></div>
-                        <div class="slide"><img alt="סבון מחלב אם טבעי - תמונה 2" src="https://i.imgur.com/Agz3Gye.jpeg"/></div>
-                        <div class="slide"><img alt="סבון מחלב אם טבעי - תמונה 3" src="https://i.imgur.com/CQZCkT5.jpeg"/></div>
+                        <div class="slide"><img alt="סבון מחלב אם טבעי - תמונה 1" src="https://i.imgur.com/m2nDchP.jpeg"/></div>
+                        <div class="slide"><img alt="סבון מחלב אם טבעי - תמונה 2" src="https://i.imgur.com/t8Y1Jrc.jpeg"/></div>
+                        <div class="slide"><img alt="סבון מחלב אם טבעי - תמונה 3" src="https://i.imgur.com/xGCiRsO.jpeg"/></div>
                     </div>
                 </div>
             </div>
@@ -398,24 +589,19 @@
 
     <div class="modal" id="shippingModal">
         <div class="modal-content">
-            <h2>פרטי משלוח 📦</h2>
+            <h2>פרטי הזמנה 📝</h2>
             
             <div class="form-group" style="text-align: center; margin-bottom: 5px;">
                 <label for="copies" style="font-size: 14px; margin-bottom: 2px;">כמות סבונים:</label>
                 <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
                     <select id="copies">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
+                        <option value="1">1 יח' (₪45)</option>
+                        <option value="2">2 יח' (₪90)</option>
+                        <option value="4">4 יח' (₪180)</option>
+                        <option value="6">6 יח' (₪270)</option>
+                        <option value="10">10 יח' (₪450)</option>
                     </select>
-                    <div class="price" id="totalPrice" style="font-size: 20px;">₪45</div>
+                    <div class="price" id="totalPrice" style="font-size: 24px;">₪45</div>
                     <span class="old-price" id="oldPrice"></span>
                 </div>
             </div>
@@ -430,11 +616,17 @@
             
             <hr style="border: 0; border-top: 1px dashed #eee; margin: 15px 0;">
 
+            <h3>פרטי משלוח</h3>
             <div class="form-group"><label for="shippingName">שם מלא</label><input type="text" id="shippingName" required placeholder="שם ושם משפחה"></div>
             <div class="form-group"><label for="shippingPhone">טלפון</label><input type="tel" id="shippingPhone" required placeholder="05X-XXXXXXX"></div>
             <div class="form-group"><label for="shippingEmail">דוא"ל</label><input type="email" id="shippingEmail" required placeholder="example@mail.com"></div>
             <div class="form-group"><label for="shippingCity">עיר</label><input type="text" id="shippingCity" required placeholder="לדוגמה: תל אביב"></div>
             <div class="form-group"><label for="shippingAddress">כתובת</label><input type="text" id="shippingAddress" required placeholder="רחוב, מספר בית, דירה"></div>
+            
+            <h3>פרטי התאמה אישית</h3>
+            <div class="form-group"><label for="babyAge">גיל התינוק (חודשים)</label><input type="number" id="babyAge" required placeholder="לדוגמה: 3" min="0" max="48"></div>
+            <div class="form-group"><label for="allergies">אלרגיות / מתכון מותאם אישית (אופציונלי)</label><textarea id="allergies" placeholder="ציין אלרגיות ידועות או בקשה מיוחדת למתכון (מגע מזין, מגע מתוק וכו')"></textarea></div>
+
             <div class="modal-buttons">
                 <button class="btn" id="continueToPaymentBtn" style="flex-grow: 1;">המשך לתשלום</button>
                 <button class="btn close-modal" data-modal="shippingModal" style="background: #999; flex-grow: 1;">ביטול</button>
@@ -446,15 +638,15 @@
         <div class="modal-content">
             <h2 id="paymentModalTitle">שלב התשלום ✅</h2>
             <p>
-                <strong>סכום סופי: <span id="paymentTotalAmount">₪45</span></strong>
+                **סכום סופי לתשלום: <span id="paymentTotalAmount">₪45</span>**
             </p>
             <hr style="border: 0; border-top: 1px solid #ddd; margin: 15px 0;">
             <p style="font-size: 14px;">
-                לחיצה על הכפתור תעביר אותך לתשלום מאובטח ב-Bit. לאחר מכן, פרטי ההזמנה יישלחו אלינו.
+                לחיצה על הכפתור תשלח אלינו את פרטי ההזמנה שלך ותעביר אותך לתשלום מאובטח באמצעות אפליקציית Bit.
             </p>
             <div class="modal-buttons" style="flex-direction: column; width: 100%;">
                 <button class="btn" id="openBitApp" style="width: 100%;">מעבר לתשלום (Bit)</button>
-                <button class="btn close-modal" data-modal="paymentModal" style="background: #999; width: 100%; margin-top: 5px;">חזרה</button>
+                <button class="btn close-modal" data-modal="paymentModal" style="background: #999; width: 100%; margin-top: 5px;">חזרה לפרטי משלוח</button>
             </div>
         </div>
     </div>
@@ -462,13 +654,16 @@
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
     
     <script>
+        // Initialize EmailJS (REPLACE WITH YOUR KEYS)
+        // **IMPORTANT:** Replace 'service_cprtttd' and 'template_m39ushb' with your actual service/template IDs
         emailjs.init('ecHybfD_vT68aQGnO'); 
 
         const PRICE_PER_BOOK = 45; 
         
         const COUPONS = {
-            'TALYA20': 0.20, 
-            'TALYA10': 0.10  
+            'TALYA20': 0.20, // 20% discount
+            'MAMA10': 0.10,  // 10% discount
+            'YOLADET': 0.15 // 15% discount
         };
         let isDiscountApplied = false;
         let discountRate = 0; 
@@ -496,26 +691,29 @@
         const closeSidebarBtn = document.getElementById('close-sidebar-btn');
         const sidebarOverlay = document.getElementById('sidebar-overlay');
 
+        // REMOVED: Logo elements for scroll logic
+        // const logoWrapper = document.querySelector('.logo-header-wrapper');
+
 
         let currentOrderData = {};
 
         function updateTotal() {
             const quantity = parseInt(copiesInput.value) || 1;
             let total = PRICE_PER_BOOK * quantity;
+            let finalTotal = total;
             
             if (isDiscountApplied) {
-                const originalTotal = total;
-                total = total * (1 - discountRate);
-                total = Math.round(total); 
+                finalTotal = total * (1 - discountRate);
+                finalTotal = Math.round(finalTotal); // Round to nearest Shekel
                 
-                oldPriceEl.textContent = `₪${originalTotal}`;
+                oldPriceEl.textContent = `₪${total}`;
                 oldPriceEl.classList.add('show');
             } else {
                 oldPriceEl.classList.remove('show');
             }
 
-            totalPriceEl.textContent = `₪${total}`;
-            paymentTotalAmount.textContent = `₪${total}`; 
+            totalPriceEl.textContent = `₪${finalTotal}`;
+            paymentTotalAmount.textContent = `₪${finalTotal}`; 
         }
 
         function applyCoupon() {
@@ -549,6 +747,13 @@
             modalElement.classList.remove('show');
         }
 
+        // --- Logo Scroll Hide Logic (REMOVED) ---
+        // window.addEventListener('scroll', handleScroll);
+        // handleScroll();
+        // --- End Logo Scroll Hide Logic ---
+
+
+        // --- Sidebar Logic ---
         function toggleSidebar() {
             sidebar.classList.toggle('open');
             sidebarOverlay.classList.toggle('show');
@@ -565,18 +770,22 @@
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     targetElement.scrollIntoView({ behavior: 'smooth' });
-                    toggleSidebar();
+                    // Close sidebar after click
+                    if (sidebar.classList.contains('open')) {
+                         toggleSidebar();
+                    }
                 }
             });
         });
 
+        // --- Email Sending Logic ---
         function sendOrderEmail() {
             if (Object.keys(currentOrderData).length === 0) {
                 return;
             }
 
             emailjs.send('service_cprtttd', 'template_m39ushb', {
-                to_email: 'c203240130@gmail.com', 
+                to_email: 'c203240130@gmail.com', // **REPLACE WITH THE REAL EMAIL**
                 name: currentOrderData.name,
                 phone: currentOrderData.phone,
                 email: currentOrderData.email,
@@ -584,14 +793,18 @@
                 address: currentOrderData.address,
                 copies: currentOrderData.copies,
                 total: currentOrderData.totalPrice,
+                baby_age: currentOrderData.babyAge,
+                allergies: currentOrderData.allergies,
                 product_name: "סבון טבעי מחלב אם" 
             })
             .then(function(response) {
-                console.log('SUCCESS');
+                console.log('Order Email Sent SUCCESSFULLY');
             }, function(error) {
-                console.log('FAILED', error);
+                console.warn('Order Email FAILED to send', error);
             });
         }
+        // --- End Email Sending Logic ---
+
 
         openOrderModalBtn.addEventListener('click', ()=>{ 
             updateTotal();
@@ -602,6 +815,7 @@
         applyCouponBtn.addEventListener('click', applyCoupon);
         couponInput.addEventListener('keypress', function (e) {
             if (e.key === 'Enter') {
+                e.preventDefault(); 
                 applyCoupon();
             }
         });
@@ -609,7 +823,7 @@
         updateTotal(); 
 
 
-        // --- CAROUSEL LOGIC ---
+        // --- CAROUSEL LOGIC (RTL FIXED) ---
         (function(){
             const slidesEl = document.getElementById('slides');
             const slides = Array.from(slidesEl.children);
@@ -621,7 +835,9 @@
             function update(){
                 // Calculate the translation distance: index * (100% / number of slides)
                 const slideWidth = 100 / slides.length; 
-                slidesEl.style.transform = `translateX(-${index * slideWidth}%)`;
+                
+                // For RTL display, we use a POSITIVE translateX value
+                slidesEl.style.transform = `translateX(${index * slideWidth}%)`;
             }
 
             function nextSlide(){ 
@@ -651,25 +867,30 @@
             const email = document.getElementById('shippingEmail').value.trim();
             const city = document.getElementById('shippingCity').value.trim();
             const address = document.getElementById('shippingAddress').value.trim();
+            const babyAge = document.getElementById('babyAge').value.trim();
+            const allergies = document.getElementById('allergies').value.trim();
+            
             const copies = copiesInput.value;
             const totalPrice = paymentTotalAmount.textContent;
             
-            if (!name || !phone || !email || !city || !address) {
-                alert('אנא מלאו את כל פרטי המשלוח הנדרשים.');
+            if (!name || !phone || !email || !city || !address || !babyAge) {
+                alert('אנא מלאו את כל פרטי המשלוח וההתאמה האישית (כולל גיל התינוק).');
                 return;
             }
             
-            currentOrderData = { name, phone, email, city, address, copies, totalPrice }; 
+            currentOrderData = { name, phone, email, city, address, copies, totalPrice, babyAge, allergies }; 
 
             closeModal(shippingModal);
             paymentModal.classList.add('show');
         });
 
         openBitApp.addEventListener('click', ()=>{
-            sendOrderEmail(); 
-            // Updated BitPay Link
+            sendOrderEmail(); // Send the order details via email
+            
+            // Redirect to BitPay link (Placeholder - replace with Coral's link if needed)
             window.open('https://www.bitpay.co.il/app/me/9364874B-AF78-48EC-1189-1141F63194B7269A', '_blank');
 
+            // Close the modal after submission
             closeModal(paymentModal);
         });
 
@@ -677,6 +898,7 @@
             button.addEventListener('click', () => {
                 const modalId = button.dataset.modal || (button.closest('.modal') ? button.closest('.modal').id : null);
                 if (modalId === 'paymentModal') {
+                    // Back to shipping form from payment
                     closeModal(document.getElementById(modalId));
                     shippingModal.classList.add('show');
                 } else if (modalId) {
@@ -686,13 +908,12 @@
         });
 
         document.querySelectorAll('.modal').forEach(modal => {
-            modal.addEventListener('click', (e) => { 
-                if(e.target === modal){ 
+            modal.addEventListener('click', (e) => {
+                if (e.target.classList.contains('modal')) {
                     closeModal(modal);
-                } 
+                }
             });
         });
     </script>
 </body>
-
 </html>
