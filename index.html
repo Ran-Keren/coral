@@ -417,9 +417,18 @@
             .app {
                 padding-top: 24px; /* No need for large padding-top anymore */
             }
+            
+            /* Modal adjustments for smaller devices */
+            .modal-content {
+                padding: 15px;
+                width: 95%; /* Ensures it doesn't touch edges */
+            }
+            .form-group { margin-bottom: 8px; }
+            .modal h2 { font-size: 20px; margin-bottom: 5px; }
+            hr { margin: 10px 0 !important; }
         }
         
-        /* Mobile Specific */
+        /* Mobile Specific (further refinements) */
         @media (max-width: 550px) {
             
             .logo-container { 
@@ -438,14 +447,6 @@
             .sidebar.open {
                 right: 0; 
             }
-            /* Extra compactness for small screens */
-            .modal-content {
-                padding: 15px;
-                width: 95%;
-            }
-            .form-group { margin-bottom: 8px; }
-            .modal h2 { font-size: 20px; margin-bottom: 5px; }
-            hr { margin: 10px 0 !important; }
             
             .app {
                 padding-top: 24px; /* No need for large padding-top anymore */
