@@ -212,8 +212,9 @@
         /* --- End Carousel Specific CSS --- */
 
 
-        /* --- Compact Modal Styles --- */
-        .modal{display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.6);align-items:center;justify-content:center; padding: 10px;}
+        /* --- Compact Modal Styles (UPDATED FOR PERFECT CENTERING) --- */
+        /* Removed padding: 10px; to ensure perfect centering via flexbox */
+        .modal{display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.6);align-items:center;justify-content:center;}
         .modal.show{display:flex}
         
         .modal-content{
