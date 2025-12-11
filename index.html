@@ -332,7 +332,7 @@
             max-width: 380px; /* Adjusted max width for better mobile fit */
         }
         
-        /* --- General Instructions List with Red Bullets (UPDATED FOR RED TEXT) --- */
+        /* --- General Instructions List with Red Bullets (UPDATED FOR RED TEXT AND BOLD) --- */
         .general-instructions-list {
             list-style: none; 
             padding-right: 20px; 
@@ -345,6 +345,7 @@
             padding-right: 12px; 
             color: var(--error); /* MADE ALL TEXT RED */
             line-height: 1.5;
+            font-weight: 700; /* ADDED: Make all text bold */
         }
         /* Custom red bullet for all items */
         .general-instructions-list li::before {
@@ -356,9 +357,9 @@
             font-size: 1.2em;
             top: 0;
         }
-        /* Style for the last, important item (keep bold) */
+        /* Style for the last, important item (keep bold - now redundant but harmless) */
         .general-instructions-list li.important-note {
-            font-weight: 700; /* Keep bold for the last one for extra emphasis */
+            font-weight: 700; 
             margin-bottom: 0;
         }
         
