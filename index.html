@@ -364,15 +364,6 @@
             margin-bottom: 0;
         }
         
-        /* Special styles for Kit */
-        .special-kit {
-            background: #fff5f8; /* Very light pink */
-            border: 2px solid #E91E63;
-            border-radius: 12px;
-            padding: 15px;
-            margin-top: 20px;
-        }
-        
         /* --- Sidebar Styles (UPDATED TO FLOATING/FIXED TOGGLE) --- */
         #sidebar-toggle {
             /* FIXED: Floating Styles */
@@ -465,6 +456,22 @@
             display: block;
         }
 
+        /* NEW: Gift package image gallery */
+        .gift-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .gift-gallery img {
+            width: 300px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            object-fit: cover;
+        }
+
         /* Responsive */
         @media (max-width:900px){
             .card{
@@ -530,6 +537,11 @@
             #shippingDetailsModal .modal-buttons .btn {
                 padding: 10px 10px; /* Smaller buttons on smallest screen */
                 font-size: 15px;
+            }
+
+            .gift-gallery img {
+                width: 100%;
+                max-width: 300px;
             }
         }
         
@@ -630,11 +642,11 @@
                 </p>
                 
                 <h2 id="product-variations">🌱 המוצרים שלנו:</h2>
-                
-                <p style="font-size: 20px; font-weight: 800; color: #E91E63; text-align: center; margin-bottom: 10px;">
-                    ** מינימום 2 יחידות בהזמנה **
-                </p>
 
+                <p style="font-size: 18px; font-weight: 700; color: var(--error); text-align: center; margin-bottom: 20px;">
+                    ⚠️ מינימום הזמנה: 2 יחידות
+                </p>
+                
                 <p style="font-size: 16px; font-weight: 600; color: var(--accent); margin-bottom: 15px; border-right: 3px solid var(--accent); padding-right: 10px;">
                     ניתן לבקש מתכון מותאם אישית, לפי הנתונים האישיים של עור התינוק שלך.
                 </p>
@@ -683,18 +695,23 @@
                         <p style="font-size: 14px; color: #555;">אל-סבון טיפולי לעור רגיש, מתאים במיוחד לתינוקות עם נטייה לאדמומיות. מכיל שמן אובליפיחה אורגני.</p>
                     </div>
 
-                    <div class="product-item special-kit">
-                        <h3 style="text-align: center; color: #E91E63;">🎁 מארז ליולדת</h3>
-                        <p style="font-weight: 700; text-align: center;">מתנה מרגשת ומקסימה לחברה שחובקת תינוק חדש וטהור.</p>
-                        <p style="text-align: center;">במארז ליולדת ניתן לקבל את המתכונים הנ"ל בשבלונות מתוקות ומיוחדות, במארז מפנק ומרגש!</p>
-                        
-                        <div style="text-align: center; margin: 15px 0;">
-                            </div>
-
-                        <p style="font-size: 14px; color: #777; text-align: center;">* תמונות של הסבונים של המארז להמחשה בלבד. ט.ל.ח</p>
-                    </div>
-
                 </div>
+
+                <h2 style="margin-top: 40px;">🎁 מארז ליולדת</h2>
+                <p style="font-size: 18px; text-align: center;">
+                    מתנה מרגשת ומקסימה לחברה שחובקת תינוק חדש וטהור.<br>
+                    במארז ליולדת ניתן לקבל את המתכונים הנ"ל בשבלונות מתוקות ומיוחדות (כמו לבבות), במארז מפנק ומרגש!
+                </p>
+
+                <div class="gift-gallery">
+                    <img src="https://i.imgur.com/lsHZHR1.jpeg" alt="מארז סבונים בצורת לב - דוגמה 1 (להמחשה בלבד)">
+                    <img src="https://i.imgur.com/m2nDchP.jpeg" alt="מארז סבונים בצורת לב - דוגמה 2 (להמחשה בלבד)">
+                    <img src="https://i.imgur.com/KXwgYtr.jpeg" alt="מארז סבונים בצורת לב - דוגמה 3 (להמחשה בלבד)">
+                </div>
+
+                <p style="font-size: 14px; color: #666; text-align: center; margin-top: 10px;">
+                    * התמונות להמחשה בלבד. ט.ל.ח
+                </p>
 
                 <h3 style="margin-top: 30px; border-bottom: 2px solid #eee; padding-bottom: 5px; color: var(--new-accent); text-align: center;">⚠️ הנחיות כלליות</h3>
                 
@@ -725,7 +742,7 @@
             <h2>שלב 1: בחירת מוצר ועיצוב 🧼</h2>
             
             <div class="form-group">
-                <label for="copies">כמות סבונים (מינימום 2):</label>
+                <label for="copies">כמות סבונים:</label>
                 <select id="copies">
                     <option value="2">2 יח' (₪80)</option>
                     <option value="4">4 יח' (₪160)</option>
@@ -754,7 +771,6 @@
                     <option value="" disabled selected>בחר צורה</option>
                     <option value="מלבנית">מלבנית</option>
                     <option value="שושנה">שושנה</option>
-                    <option value="לב">לב</option>
                 </select>
             </div>
 
@@ -836,15 +852,14 @@
     
     <script>
         // Initialize EmailJS (REPLACE WITH YOUR KEYS)
-        // **IMPORTANT:** Replace 'service_cprtttd' and 'template_m39ushb' with your actual service/template IDs
         emailjs.init('ecHybfD_vT68aQGnO'); 
 
-        const PRICE_PER_SOAP = 40; // Updated to 40
+        const PRICE_PER_SOAP = 40; 
         
         const COUPONS = {
-            'TALYA20': 0.20, // 20% discount
+            'CORAL20': 0.20, // 20% discount
             'MAMA10': 0.10,  // 10% discount
-            'YOLADET': 0.15 // 15% discount
+            'YOLEDET': 0.15 // 15% discount
         };
         let isDiscountApplied = false;
         let discountRate = 0; 
@@ -899,7 +914,6 @@
         let currentOrderData = {};
 
         function updateTotal() {
-            // Default to 2 if something goes wrong, but select starts at 2 now
             const quantity = parseInt(copiesInput.value) || 2;
             let total = PRICE_PER_SOAP * quantity;
             let finalTotal = total;
@@ -966,7 +980,6 @@
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     targetElement.scrollIntoView({ behavior: 'smooth' });
-                    // Close sidebar after click
                     if (sidebar.classList.contains('open')) {
                          toggleSidebar();
                     }
@@ -980,7 +993,6 @@
                 return;
             }
             
-            // Format the product details nicely
             const productDetails = `
                 כמות: ${currentOrderData.copies} יח'
                 מתכון: ${currentOrderData.recipe}
@@ -999,7 +1011,7 @@
                 email: currentOrderData.email,
                 city: currentOrderData.city,
                 address: currentOrderData.address,
-                product_details: productDetails, // Pass the formatted product details
+                product_details: productDetails,
                 total: currentOrderData.totalPrice,
                 product_name: "סבון טבעי מחלב אם" 
             })
@@ -1039,10 +1051,8 @@
             let timer = null;
             
             function update(){
-                // Calculate the translation distance: index * (100% / number of slides)
                 const slideWidth = 100 / slides.length; 
                 
-                // For RTL display, we use a POSITIVE translateX value
                 slidesEl.style.transform = `translateX(${index * slideWidth}%)`;
             }
 
@@ -1058,7 +1068,6 @@
             
             startTimer();
 
-            // Pause timer on hover
             const carouselWrap = document.querySelector('.carousel-wrap');
             carouselWrap.addEventListener('mouseenter', ()=>{ if(timer) clearInterval(timer); });
             carouselWrap.addEventListener('mouseleave', ()=>{ startTimer(); });
@@ -1082,7 +1091,6 @@
                 return;
             }
             
-            // Collect Product Data
             currentOrderData.copies = copiesInput.value;
             currentOrderData.totalPrice = paymentTotalAmount.textContent;
             currentOrderData.recipe = recipe;
@@ -1115,7 +1123,6 @@
                 return;
             }
             
-            // Collect Shipping Data
             currentOrderData.name = name;
             currentOrderData.phone = phone;
             currentOrderData.email = email;
@@ -1129,12 +1136,10 @@
         });
 
         openBitApp.addEventListener('click', ()=>{
-            sendOrderEmail(); // Send the order details via email
+            sendOrderEmail(); 
             
-            // Redirect to BitPay link (Placeholder - replace with Coral's link if needed)
             window.open('https://www.bitpay.co.il/app/me/9364874B-AF78-48EC-1189-1141F63194B7269A', '_blank');
 
-            // Close the modal after submission
             closeModal(paymentModal);
         });
 
@@ -1142,9 +1147,8 @@
             button.addEventListener('click', () => {
                 const modalId = button.dataset.modal || (button.closest('.modal') ? button.closest('.modal').id : null);
                 if (modalId === 'paymentModal') {
-                    // Back to shipping form from payment
                     closeModal(document.getElementById(modalId));
-                    shippingDetailsModal.classList.add('show'); // Go back to step 2
+                    shippingDetailsModal.classList.add('show');
                 } else if (modalId) {
                     closeModal(document.getElementById(modalId));
                 }
@@ -1154,7 +1158,6 @@
         document.querySelectorAll('.modal').forEach(modal => {
             modal.addEventListener('click', (e) => {
                 if (e.target.classList.contains('modal')) {
-                    // If modal content is small, it still closes, which is the standard behavior.
                     closeModal(modal);
                 }
             });
