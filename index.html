@@ -364,6 +364,15 @@
             margin-bottom: 0;
         }
         
+        /* Special styles for Kit */
+        .special-kit {
+            background: #fff5f8; /* Very light pink */
+            border: 2px solid #E91E63;
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        
         /* --- Sidebar Styles (UPDATED TO FLOATING/FIXED TOGGLE) --- */
         #sidebar-toggle {
             /* FIXED: Floating Styles */
@@ -593,7 +602,7 @@
 
                 <h1>סבון טבעי מחלב אם</h1>
                 <p class="lead" style="color: #444; text-align: center;">
-                    טבעי. אישי. מושלם
+                    טבעי. אישי. מהלב
                 </p>
 
                 <p class="lead" id="product-description">
@@ -622,6 +631,10 @@
                 
                 <h2 id="product-variations">🌱 המוצרים שלנו:</h2>
                 
+                <p style="font-size: 20px; font-weight: 800; color: #E91E63; text-align: center; margin-bottom: 10px;">
+                    ** מינימום 2 יחידות בהזמנה **
+                </p>
+
                 <p style="font-size: 16px; font-weight: 600; color: var(--accent); margin-bottom: 15px; border-right: 3px solid var(--accent); padding-right: 10px;">
                     ניתן לבקש מתכון מותאם אישית, לפי הנתונים האישיים של עור התינוק שלך.
                 </p>
@@ -670,6 +683,17 @@
                         <p style="font-size: 14px; color: #555;">אל-סבון טיפולי לעור רגיש, מתאים במיוחד לתינוקות עם נטייה לאדמומיות. מכיל שמן אובליפיחה אורגני.</p>
                     </div>
 
+                    <div class="product-item special-kit">
+                        <h3 style="text-align: center; color: #E91E63;">🎁 מארז ליולדת</h3>
+                        <p style="font-weight: 700; text-align: center;">מתנה מרגשת ומקסימה לחברה שחובקת תינוק חדש וטהור.</p>
+                        <p style="text-align: center;">במארז ליולדת ניתן לקבל את המתכונים הנ"ל בשבלונות מתוקות ומיוחדות, במארז מפנק ומרגש!</p>
+                        
+                        <div style="text-align: center; margin: 15px 0;">
+                            </div>
+
+                        <p style="font-size: 14px; color: #777; text-align: center;">* תמונות של הסבונים של המארז להמחשה בלבד. ט.ל.ח</p>
+                    </div>
+
                 </div>
 
                 <h3 style="margin-top: 30px; border-bottom: 2px solid #eee; padding-bottom: 5px; color: var(--new-accent); text-align: center;">⚠️ הנחיות כלליות</h3>
@@ -701,13 +725,12 @@
             <h2>שלב 1: בחירת מוצר ועיצוב 🧼</h2>
             
             <div class="form-group">
-                <label for="copies">כמות סבונים:</label>
+                <label for="copies">כמות סבונים (מינימום 2):</label>
                 <select id="copies">
-                    <option value="1">1 יח' (₪45)</option>
-                    <option value="2">2 יח' (₪90)</option>
-                    <option value="4">4 יח' (₪180)</option>
-                    <option value="6">6 יח' (₪270)</option>
-                    <option value="10">10 יח' (₪450)</option>
+                    <option value="2">2 יח' (₪80)</option>
+                    <option value="4">4 יח' (₪160)</option>
+                    <option value="6">6 יח' (₪240)</option>
+                    <option value="10">10 יח' (₪400)</option>
                 </select>
             </div>
 
@@ -731,7 +754,7 @@
                     <option value="" disabled selected>בחר צורה</option>
                     <option value="מלבנית">מלבנית</option>
                     <option value="שושנה">שושנה</option>
-                    <option value="לב (2 יח' במארז)">לב (2 יח' במארז)</option>
+                    <option value="לב">לב</option>
                 </select>
             </div>
 
@@ -751,7 +774,7 @@
             </div>
             
             <div class="price-container">
-                <div class="price" id="totalPrice" style="font-size: 24px;">₪45</div>
+                <div class="price" id="totalPrice" style="font-size: 24px;">₪80</div>
                 <span class="old-price" id="oldPrice"></span>
             </div>
 
@@ -796,7 +819,7 @@
         <div class="modal-content">
             <h2 id="paymentModalTitle">שלב התשלום ✅</h2>
             <p>
-                <strong>סכום סופי לתשלום: <span id="paymentTotalAmount">₪45</span></strong>
+                <strong>סכום סופי לתשלום: <span id="paymentTotalAmount">₪80</span></strong>
             </p>
             <hr style="border: 0; border-top: 1px solid #ddd; margin: 15px 0;">
             <p style="font-size: 14px;">
@@ -816,11 +839,11 @@
         // **IMPORTANT:** Replace 'service_cprtttd' and 'template_m39ushb' with your actual service/template IDs
         emailjs.init('ecHybfD_vT68aQGnO'); 
 
-        const PRICE_PER_SOAP = 45; 
+        const PRICE_PER_SOAP = 40; // Updated to 40
         
         const COUPONS = {
             'TALYA20': 0.20, // 20% discount
-            'MAMA10': 0.10,  // 10% discount
+            'MAMA10': 0.10,  // 10% discount
             'YOLADET': 0.15 // 15% discount
         };
         let isDiscountApplied = false;
@@ -876,7 +899,8 @@
         let currentOrderData = {};
 
         function updateTotal() {
-            const quantity = parseInt(copiesInput.value) || 1;
+            // Default to 2 if something goes wrong, but select starts at 2 now
+            const quantity = parseInt(copiesInput.value) || 2;
             let total = PRICE_PER_SOAP * quantity;
             let finalTotal = total;
             
@@ -1056,14 +1080,6 @@
             if (!shape) {
                 alert('אנא בחרו צורה רצויה.');
                 return;
-            }
-            
-            // --- UPDATED VALIDATION LOGIC ---
-            // Only check for odd numbers if the shape is exactly 'לב (2 יח' במארז)'
-            const heartShapeValue = 'לב (2 יח\' במארז)';
-            if (shape === heartShapeValue && (copies % 2 !== 0)) {
-                 alert('שימו לב: צורת "לב" מגיעה 2 יח\' במארז. אנא בחרו כמות זוגית.');
-                 return;
             }
             
             // Collect Product Data
