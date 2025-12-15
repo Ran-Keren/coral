@@ -113,9 +113,9 @@
         /* Lists and Special Text */
         .natural-text { color: var(--new-accent); font-weight: 700; padding: 10px 0; border-right: 3px solid var(--new-accent); padding-right: 10px; font-size: 18px; } /* UPDATED COLOR AND FONT SIZE */
         .feature-list { list-style: none; padding: 0; margin: 10px 0; }
-        .feature-list li { margin-bottom: 10px; font-size: 18px; display: flex; align-items: center; } /* Base size */
+        .feature-list li { margin-bottom: 10px; font-size: 18px; display: flex; align-items: center; flex-wrap: nowrap; } /* Added flex-wrap: nowrap to prevent icon/text break on small screens */
         .feature-list li strong { font-weight: 700; color: #333; } /* This CSS ensures only the bolded part is stronger */
-        .feature-icon { color: var(--new-accent); font-size: 24px; margin-left: 8px; line-height: 1; } /* UPDATED COLOR AND SIZE */
+        .feature-icon { color: var(--new-accent); font-size: 24px; margin-left: 8px; line-height: 1; flex-shrink: 0; } /* flex-shrink: 0 to keep icon size */
         
         /* CTA & Coupon Styles */
         .cta{margin-top:auto;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
@@ -568,6 +568,11 @@
             .app {
                 padding-top: 24px; /* No need for large padding-top anymore */
             }
+
+            /* FIX: Prevent line break between icon and text on very small screens */
+            .feature-list li {
+                flex-wrap: nowrap;
+            }
         }
 
     </style>
@@ -700,13 +705,13 @@
                 <h2 style="margin-top: 40px;">🎁 מארז ליולדת</h2>
                 <p style="font-size: 18px; text-align: center;">
                     מתנה מרגשת ומקסימה לחברה שחובקת תינוק חדש וטהור.<br>
-                    במארז ליולדת ניתן לקבל את המתכונים הנ"ל בשבלונות מתוקות ומיוחדות (כמו לבבות), במארז מפנק ומרגש!
+                    במארז ליולדת ניתן לקבל את המתכונים הנ"ל בשבלונות מתוקות ומיוחדות, במארז מפנק ומרגש!
                 </p>
 
                 <div class="gift-gallery">
-                    <img src="https://i.imgur.com/RiayNqR.jpeg" alt="מארז סבונים בצורת לב - דוגמה 1 (להמחשה בלבד)">
-                    <img src="https://i.imgur.com/NbDhnFU.jpeg" alt="מארז סבונים בצורת לב - דוגמה 2 (להמחשה בלבד)">
-                    <img src="https://i.imgur.com/YyqzypY.jpeg" alt="מארז סבונים בצורת לב - דוגמה 3 (להמחשה בלבד)">
+                    <img src="https://i.imgur.com/lsHZHR1.jpeg" alt="מארז סבונים בצורת לב - דוגמה 1 (להמחשה בלבד)">
+                    <img src="https://i.imgur.com/m2nDchP.jpeg" alt="מארז סבונים בצורת לב - דוגמה 2 (להמחשה בלבד)">
+                    <img src="https://i.imgur.com/KXwgYtr.jpeg" alt="מארז סבונים בצורת לב - דוגמה 3 (להמחשה בלבד)">
                 </div>
 
                 <p style="font-size: 14px; color: #666; text-align: center; margin-top: 10px;">
@@ -771,6 +776,7 @@
                     <option value="" disabled selected>בחר צורה</option>
                     <option value="מלבנית">מלבנית</option>
                     <option value="שושנה">שושנה</option>
+                    <option value="לב">לב</option>
                 </select>
             </div>
 
