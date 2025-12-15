@@ -36,7 +36,6 @@
             box-shadow:0 12px 40px rgba(0,0,0,0.15);
             overflow:hidden;
             display:block; /* Changed from flex to block */
-            /* Removed: gap:var(--gap); flex-direction:row-reverse; */
         }
         
         /* ADJUSTED: Content padding reset for desktop */
@@ -62,7 +61,6 @@
             gap: 15px; 
             background: none; 
             box-shadow: none; 
-            /* Removed transition properties */
         }
 
         .logo-container { 
@@ -113,7 +111,14 @@
         /* Lists and Special Text */
         .natural-text { color: var(--new-accent); font-weight: 700; padding: 10px 0; border-right: 3px solid var(--new-accent); padding-right: 10px; font-size: 18px; } /* UPDATED COLOR AND FONT SIZE */
         .feature-list { list-style: none; padding: 0; margin: 10px 0; }
-        .feature-list li { margin-bottom: 10px; font-size: 18px; display: flex; align-items: center; flex-wrap: nowrap; } /* Added flex-wrap: nowrap to prevent icon/text break on small screens */
+        /* FIXED: Changed nowrap → wrap to prevent unwanted gaps on mobile */
+        .feature-list li { 
+            margin-bottom: 10px; 
+            font-size: 18px; 
+            display: flex; 
+            align-items: center; 
+            flex-wrap: wrap; /* ← Key fix: allows text to wrap naturally, no extra gaps */
+        } 
         .feature-list li strong { font-weight: 700; color: #333; } /* This CSS ensures only the bolded part is stronger */
         .feature-icon { color: var(--new-accent); font-size: 24px; margin-left: 8px; line-height: 1; flex-shrink: 0; } /* flex-shrink: 0 to keep icon size */
         
@@ -213,7 +218,6 @@
 
 
         /* --- Compact Modal Styles (UPDATED FOR PERFECT CENTERING) --- */
-        /* Removed padding: 10px; to ensure perfect centering via flexbox */
         .modal{display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.6);align-items:center;justify-content:center;}
         .modal.show{display:flex}
         
@@ -475,34 +479,28 @@
         /* Responsive */
         @media (max-width:900px){
             .card{
-                /* No longer a flex row layout for two main elements */
                 display: block;
             }
-            /* Increased height for mobile */
             .carousel-wrap{
-                /* Now full width, no need for min/max width overrides */
                 width:100%;
                 max-width:1100px;
                 min-width:0;
                 height:350px;
-                margin-bottom: 10px; /* REDUCED SPACE */
+                margin-bottom: 10px;
             }
-            /* ADJUSTED: Content padding reset for mobile */
             .content{padding:18px;}
             
             .logo-header-wrapper {
-                 /* Removed top: 5px; */
                  margin-bottom: 15px;
             }
             .logo-container { 
-                width: 120px; /* ADJUSTED: Smaller for tablet/mobile */
+                width: 120px;
                 height: 120px;
             }
             
-            /* ADJUSTED: Sidebar toggle position (fixed but adjusted for mobile view) */
             #sidebar-toggle {
-                right: 15px; /* FIXED: Adjusting fixed position for mobile */
-                left: auto; /* Ensure left is auto */
+                right: 15px;
+                left: auto;
                 top: 15px;
                 margin: 0;
                 padding: 8px 12px;
@@ -510,32 +508,32 @@
                 z-index: 1000;
             }
             
-            /* Padding for app on small screens so the logo doesn't cover the main content */
             .app {
-                padding-top: 24px; /* No need for large padding-top anymore */
+                padding-top: 24px;
             }
             
-            /* NEW: Reduced font for feature list items on mobile */
+            /* Mobile: smaller font + wrap allowed */
             .feature-list li { 
-                font-size: 15px; /* FURTHER REDUCED for better mobile fit */
+                font-size: 15px;
+                flex-wrap: wrap; /* Ensures consistent spacing on mobile */
             }
             
             /* Modal adjustments for smaller devices */
             .modal-content {
-                padding: 10px; /* Adjusted mobile padding (reduced from 12px) */
-                width: 95%; /* Ensures it doesn't touch edges */
+                padding: 10px;
+                width: 95%;
             }
-            .form-group { margin-bottom: 5px; } /* Further reduced form group margin (from 8px) */
-            .modal h2 { font-size: 24px; margin-bottom: 5px; } /* Adjusted mobile H2 */
-            .modal h3 { margin-top: 3px; font-size: 18px; padding: 3px 0; margin-bottom: 3px; } /* Adjusted mobile H3 for tighter fit */
-            hr { margin: 8px 0 !important; } /* Further reduced HR margin (from 10px) */
+            .form-group { margin-bottom: 5px; }
+            .modal h2 { font-size: 24px; margin-bottom: 5px; }
+            .modal h3 { margin-top: 3px; font-size: 18px; padding: 3px 0; margin-bottom: 3px; }
+            hr { margin: 8px 0 !important; }
             
             #shippingDetailsModal .modal-content {
-                max-width: 95vw; /* Ensure it respects overall mobile padding */
-                padding: 15px; /* Slightly more padding for inner content */
+                max-width: 95vw;
+                padding: 15px;
             }
             #shippingDetailsModal .modal-buttons .btn {
-                padding: 10px 10px; /* Smaller buttons on smallest screen */
+                padding: 10px 10px;
                 font-size: 15px;
             }
 
@@ -545,11 +543,9 @@
             }
         }
         
-        /* Mobile Specific (further refinements) */
         @media (max-width: 550px) {
-            
             .logo-container { 
-                width: 100px; /* ADJUSTED: Smaller for very small screens */
+                width: 100px;
                 height: 100px;
             }
             
@@ -566,12 +562,11 @@
             }
             
             .app {
-                padding-top: 24px; /* No need for large padding-top anymore */
+                padding-top: 24px;
             }
 
-            /* FIX: Prevent line break between icon and text on very small screens */
             .feature-list li {
-                flex-wrap: nowrap;
+                flex-wrap: wrap; /* Consistent on very small screens */
             }
         }
 
